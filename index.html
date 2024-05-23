@@ -11,8 +11,39 @@
     <script src="./src/js/login.js" defer></script>
     <title>Login</title>
 </head>
-<body class="font-poppins min-h-screen">
-    <main class="">
+<body class="font-poppins min-h-screen grid grid-cols-[7fr_6fr]">
+    <div class="bg-blue-3 flex flex-col items-center justify-center gap-8">
+        <img src="./src/images/logo.png" alt="Martelo" class="w-2/5">
+        <div class="flex flex-col items-center justify-center gap-6 text-white px-4">
+            <h1 class="text-headline-2 uppercase font-bold tracking-[0.6rem]">Leilão Expresso</h1>
+            <p class="text-4xl text-center font-light">Plataforma para leilões de forma expressa e segura!</p>
+        </div>
+    </div>
+    <main class="flex flex-col items-center justify-center px-[6vw] gap-12">
+        <h2 class="text-blue-3 font-bold tracking-widest text-headline-1"> Login </h2>
+        <form class="w-full flex flex-col items-center justify-center">
+            <input type="text" id="email" placeholder="E-mail" class="w-full h-16 rounded-lg py-2 px-4 mb-6 text-xl bg-gray-3 outline-brown-3">
+            <div class="flex items-center justify-center w-full h-16 rounded-lg py-2 px-4 mb-6 text-xl bg-gray-3 outline-brown-3">
+                <input type="password" id="password" placeholder="Senha" class="bg-transparent outline-none flex-grow">
+                <button type="button" id="show-password" class="h-4/5 outline-none">
+                    <img src="./src/images/svg/eye.svg" alt="Olho" class="w-full h-full">
+                </button>
+            </div>
+            <label for="stay-signed-login" class="flex w-full gap-2 relative pl-8 cursor-pointer mb-12 text-xl select-none"> 
+                    Lembrar de mim
+                <input type="checkbox" id="stay-signed-login" class="absolute opacity-0 cursor-pointer w-0 h-0">
+                <span class="absolute top-1/2 -translate-y-1/2 left-0 w-6 h-6 rounded-md ease-linear duration-200 bg-gray-3 p-1">
+                    <img src="./src/images/svg/checkbox-correct.svg" alt="Confirmado" class="hidden">
+                </span>
+            </label>
+            <button id="login-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg">
+                Entrar
+            </button>
+        </form>
+        <span class="flex gap-2 text-2xl">
+            Não tem uma conta?
+            <a href="./src/pages/register.html" class="text-blue-3 font-bold"> Cadastre-se </a>
+        </span>
     </main>
 </body>
 </html>
