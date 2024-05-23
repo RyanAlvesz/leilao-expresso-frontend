@@ -626,6 +626,12 @@ video {
   font-family: Poppins, sans-serif;
 }
 
-.text-name-profile {
-  font-size:  calc(1.2rem + 1.2vw);
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
