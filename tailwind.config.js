@@ -29,7 +29,8 @@ module.exports = {
         'headline-1': 'calc(2rem + 2.5vw)',
         'headline-2': 'calc(1.3rem + 2.4vw)',
         'title-1': ' calc(1.6rem + 1.2vw)',
-        'title-2': 'calc(1.6rem + 1.2vw)'
+        'title-2': 'calc(1.6rem + 1.2vw)',
+        'name-profile': ' calc(1.2rem + 1.2vw)'
       }
     },
   }
