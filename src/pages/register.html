@@ -68,8 +68,9 @@
         <section id="register-profile-picture" class="flex flex-col items-center justify-center gap-12 w-full h-full ease-linear duration-500 absolute inset-0 px-[6vw] opacity-0 -z-10 bg-white max-md:justify-start max-md:px-[8vw] max-[340px]:px-[6vw] max-md:py-16">
             <h2 class="text-blue-3 font-bold text-center tracking-widest text-5xl max-md:text-title-1"> Foto de Perfil </h2>
             <form id="form-profile-picture" class="w-full flex flex-col items-center justify-center">
-                <label for="profile-picture" class="w-[20vh] h-[20vh] flex items-end justify-end bg-gray-3 bg-[url('../images/svg/auction.svg')] bg-no-repeat bg-cover rounded-full mb-12 cursor-pointer">
-                    <div class="h-1/4 w-1/4 rounded-full bg-blue-3 p-2">
+                <label for="profile-picture" class="w-[20vh] h-[20vh] flex items-center justify-center p-4 bg-gray-3 rounded-full mb-12 cursor-pointer relative">
+                    <img src="../images/svg/auction.svg" alt="Martelo" class="w-full h-full">
+                    <div class="h-1/4 w-1/4 rounded-full bg-blue-3 p-2 absolute bottom-0 right-0">
                         <img src="../images/svg/camera.svg" alt="Pessoa" class="w-full h-full">
                     </div>
                     <input type="file" id="profile-picture" class="hidden" accept="image/*">
