@@ -6,12 +6,92 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./src/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="../css/output.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="../js/register.js" type="module" defer></script>
     <title>Criar conta</title>
 </head>
-<body class="font-poppins min-h-screen">
-    <main class="">
+<body class="font-poppins min-h-screen grid grid-cols-[6fr_7fr] max-[1250px]:grid-cols-2 max-md:flex">
+    <main class="flex relative px-[6vw] max-md:w-full max-md:px-[8vw] max-[340px]:px-[6vw]">
+        <section id="register-account" class="flex flex-col items-center justify-center gap-8 py-4 w-full h-full bg-white max-md:gap-6 max-md:py-12">
+            <h2 class="text-blue-3 font-bold tracking-widest text-headline-1 max-md:text-display-1"> Sign Up </h2>
+            <form id="form-account" class="w-full flex flex-col items-center justify-center">
+                <input type="text" id="name" autocomplete="off" required placeholder="Nome" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
+                <input type="tel" id="phone" autocomplete="off" required maxlength="15" placeholder="Telefone" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
+                <input type="text" id="cpf" autocomplete="off" required maxlength="14" placeholder="CPF" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
+                <input type="email" id="email" autocomplete="off" required placeholder="E-mail" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
+                <div class="flex items-center justify-center w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 outline-2 max-md:h-14 max-md:text-lg max-md:px-3">
+                    <input type="password" id="password" autocomplete="off" required placeholder="Senha" class="bg-transparent outline-none grow min-w-fit">
+                    <button type="button" id="show-password" class="h-4/5 outline-none flex-shrink-0">
+                        <img src="../images/svg/eye.svg" alt="Olho" class="w-full h-full">
+                    </button>
+                </div>
+                <label for="stay-signed-register" class="flex w-full gap-2 relative pl-8 cursor-pointer mb-8 text-xl select-none max-md:text-lg max-sm:text-base"> 
+                        Lembrar de mim
+                    <input type="checkbox" id="stay-signed-register" class="absolute opacity-0 cursor-pointer w-0 h-0">
+                    <span class="absolute top-1/2 -translate-y-1/2 left-0 w-6 h-6 rounded-md ease-linear duration-200 bg-gray-3 p-1">
+                        <img src="../images/svg/checkbox-correct.svg" alt="Confirmado" class="hidden">
+                    </span>
+                </label>
+                <button id="register-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
+                    Cadastrar
+                </button>
+            </form>
+            <span class="flex gap-2 text-xl max-[1000px]:text-lg max-[900px]:text-base max-md:text-xl max-sm:text-base max-[340px]:text-sm">
+                Já tem uma conta?
+                <a href="../../index.html" class="text-blue-3 font-bold"> Entrar </a>
+            </span>
+        </section>
+        <section id="register-address" class="flex flex-col items-center justify-center gap-8 w-full h-full ease-linear duration-500 absolute inset-0 px-[6vw] opacity-0 -z-10 bg-white max-md:gap-6 max-md:px-[8vw] max-[340px]:px-[6vw] max-md:py-12">
+            <h2 class="text-blue-3 font-bold tracking-widest text-headline-1 max-md:text-display-1"> Endereço </h2>
+            <form id="form-address" class="w-full flex flex-col items-center justify-center">
+                <input type="text" id="cep" autocomplete="off" required maxlength="9" placeholder="CEP" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
+                <div class="grid grid-cols-[10fr_2fr] gap-2">
+                    <input type="text" id="place" autocomplete="off" required placeholder="Logradouro" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 disabled:bg-gray-3/30 max-md:h-14 max-md:text-lg max-md:px-3">
+                    <input type="number" id="house-number" autocomplete="off" required placeholder="N°" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
+                </div>
+                <input type="text" id="complement" autocomplete="off" placeholder="Complemento" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
+                <input type="text" id="neighborhood" autocomplete="off" required placeholder="Bairro" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 disabled:bg-gray-3/30 max-md:h-14 max-md:text-lg max-md:px-3">
+                <input type="text" id="city" autocomplete="off" required placeholder="Cidade" class="w-full h-14 rounded-lg py-2 px-4 mb-8 text-xl bg-gray-3 outline-brown-3 disabled:bg-gray-3/30 max-md:h-14 max-md:text-lg max-md:px-3">
+                <button id="address-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
+                    Cadastrar
+                </button>
+            </form>
+            <button id="skip-address" class="w-full flex justify-end">
+                <span class="text-2xl text-blue-3 hover:underline font-bold max-[1250px]:text-xl max-[1000px]:text-lg max-[900px]:text-base max-md:text-xl max-sm:text-base max-[340px]:text-sm">
+                    Pular
+                </span>
+            </button>
+        </section>
+        <section id="register-profile-picture" class="flex flex-col items-center justify-center gap-12 w-full h-full ease-linear duration-500 absolute inset-0 px-[6vw] opacity-0 -z-10 bg-white max-md:justify-start max-md:px-[8vw] max-[340px]:px-[6vw] max-md:py-16">
+            <h2 class="text-blue-3 font-bold text-center tracking-widest text-5xl max-md:text-title-1"> Foto de Perfil </h2>
+            <form id="form-profile-picture" class="w-full flex flex-col items-center justify-center">
+                <label id="profile-picture-label" for="profile-picture" class="w-[20vh] h-[20vh] flex items-center justify-center p-4 bg-gray-3 bg-center bg-cover rounded-full mb-12 cursor-pointer relative">
+                    <img id="profile-picture-standard-image" src="../images/svg/auction.svg" alt="Martelo" class="w-full h-full">
+                    <div class="h-1/4 w-1/4 rounded-full bg-blue-3 p-2 absolute bottom-0 right-0">
+                        <img src="../images/svg/camera.svg" alt="Pessoa" class="w-full h-full">
+                    </div>
+                    <input type="file" id="profile-picture" class="hidden" accept="image/*">
+                </label>
+                <button id="profile-picture-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
+                    Salvar
+                </button>
+            </form>
+            <button id="skip-profile-picture" class="w-full flex justify-end">
+                <span class="text-2xl text-blue-3 hover:underline font-bold max-[1250px]:text-xl max-[1000px]:text-lg max-[900px]:text-base max-md:text-xl max-sm:text-base max-[340px]:text-sm">
+                    Pular
+                </span>
+            </button>
+        </section>
     </main>
+    <div class="bg-blue-3 flex flex-col items-center justify-center gap-8 max-md:hidden">
+        <img src="../images/logo.png" alt="Martelo" class="w-2/5">
+        <div class="flex flex-col items-center justify-center gap-6 text-white px-4">
+            <h1 class="text-headline-2 uppercase font-bold tracking-[0.6rem] text-center max-[1250px]:text-title-1">Leilão Expresso</h1>
+            <p class="text-4xl text-center font-light max-[1250px]:text-3xl max-[1000px]:text-2xl">Plataforma para leilões de forma expressa e segura!</p>
+        </div>
+    </div>
 </body>
 </html>
