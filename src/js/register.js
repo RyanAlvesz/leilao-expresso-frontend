@@ -11,7 +11,7 @@ const cpfInput = document.getElementById('cpf')
 const emailInput = document.getElementById('email')
 const passwordInput = document.getElementById('password')
 const showPasswordButton = document.getElementById('show-password')
-const staySignedInput = document.getElementById('stay-signed-register')
+const staySignedInput = document.getElementById('stay-signed')
 const registerButton = document.getElementById('register-button')
 
 // Register Address
@@ -34,23 +34,6 @@ const profilePictureLabel = document.getElementById('profile-picture-label')
 const profilePictureStandardImage = document.getElementById('profile-picture-standard-image')
 const profilePictureButton = document.getElementById('profile-picture-button')
 const skipProfilePicture = document.getElementById('skip-profile-picture')
-
-
-const passwordInputOutline = () => {
-    passwordInput.parentElement.classList.contains('outline') ? passwordInput.parentElement.classList.remove('outline') : passwordInput.parentElement.classList.add('outline')
-}
-
-const showPassword = () => {
-    passwordInput.type != 'password' ? passwordInput.type = 'password' : passwordInput.type = 'text'
-    passwordInput.type != 'password' ? showPasswordButton.children[0].src = '../images/svg/eye-closed.svg' : showPasswordButton.children[0].src = '../images/svg/eye.svg'
-}
-
-const checkInput = () => {
-    const img = staySignedInput.nextElementSibling.children[0]
-    staySignedInput.checked == true ? img.classList.remove('hidden') : img.classList.add('hidden')
-    staySignedInput.checked == true ? staySignedInput.nextElementSibling.classList.remove('bg-gray-3') : staySignedInput.nextElementSibling.classList.add('bg-gray-3')
-    staySignedInput.checked == true ? staySignedInput.nextElementSibling.classList.add('bg-brown-3') : staySignedInput.nextElementSibling.classList.remove('bg-brown-3')
-}
 
 const removeRegisterSection = () => {
     registerSection.classList.add('hidden')
@@ -168,10 +151,6 @@ const changePictureImagePreview = (img) => {
     profilePictureStandardImage.classList.add('hidden')
 }
 
-passwordInput.addEventListener('focus', passwordInputOutline)
-passwordInput.addEventListener('focusout', passwordInputOutline)
-showPasswordButton.addEventListener('click', showPassword)
-staySignedInput.addEventListener('click', checkInput)
 profilePicture.addEventListener('change', getProfilePictureImage)
 
 phoneInput.addEventListener('keyup', () => {

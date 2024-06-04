@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="./src/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./src/css/output.css">
     <script src="./src/js/login.js" defer></script>
+    <script src="./src/js/input-animation.js" defer></script>
     <title>Login</title>
 </head>
 <body class="font-poppins min-h-screen grid grid-cols-[7fr_6fr] max-[1250px]:grid-cols-2 max-md:flex">
@@ -29,9 +30,9 @@
                     <img src="./src/images/svg/eye.svg" alt="Olho" class="w-full h-full">
                 </button>
             </div>
-            <label for="stay-signed-login" class="flex w-full gap-2 relative pl-8 cursor-pointer mb-12 text-xl select-none max-md:text-lg max-sm:text-base"> 
+            <label for="stay-signed" class="flex w-full gap-2 relative pl-8 cursor-pointer mb-12 text-xl select-none max-md:text-lg max-sm:text-base"> 
                     Lembrar de mim
-                <input type="checkbox" id="stay-signed-login" class="absolute opacity-0 cursor-pointer w-0 h-0">
+                <input type="checkbox" id="stay-signed" class="absolute opacity-0 cursor-pointer w-0 h-0">
                 <span class="absolute top-1/2 -translate-y-1/2 left-0 w-6 h-6 rounded-md ease-linear duration-200 bg-gray-3 p-1">
                     <img src="./src/images/svg/checkbox-correct.svg" alt="Confirmado" class="hidden">
                 </span>

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/output.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <script src="../js/register.js" type="module" defer></script>
+    <script src="../js/input-animation.js" defer></script>
     <title>Criar conta</title>
 </head>
 <body class="font-poppins min-h-screen grid grid-cols-[6fr_7fr] max-[1250px]:grid-cols-2 max-md:flex">
@@ -28,9 +29,9 @@
                         <img src="../images/svg/eye.svg" alt="Olho" class="w-full h-full">
                     </button>
                 </div>
-                <label for="stay-signed-register" class="flex w-full gap-2 relative pl-8 cursor-pointer mb-8 text-xl select-none max-md:text-lg max-sm:text-base"> 
+                <label for="stay-signed" class="flex w-full gap-2 relative pl-8 cursor-pointer mb-8 text-xl select-none max-md:text-lg max-sm:text-base"> 
                         Lembrar de mim
-                    <input type="checkbox" id="stay-signed-register" class="absolute opacity-0 cursor-pointer w-0 h-0">
+                    <input type="checkbox" id="stay-signed" class="absolute opacity-0 cursor-pointer w-0 h-0">
                     <span class="absolute top-1/2 -translate-y-1/2 left-0 w-6 h-6 rounded-md ease-linear duration-200 bg-gray-3 p-1">
                         <img src="../images/svg/checkbox-correct.svg" alt="Confirmado" class="hidden">
                     </span>
