@@ -1,5 +1,7 @@
 'use strict'
 
+import { uploadImage } from "./firebase.js"
+
 // Register Account
 const registerSection = document.getElementById('register-account')
 const registerForm = document.getElementById('form-account')
@@ -28,6 +30,8 @@ const skipAddress = document.getElementById('skip-address')
 const profilePictureSection = document.getElementById('register-profile-picture')
 const profilePictureForm = document.getElementById('form-profile-picture')
 const profilePicture = document.getElementById('profile-picture')
+const profilePictureLabel = document.getElementById('profile-picture-label')
+const profilePictureStandardImage = document.getElementById('profile-picture-standard-image')
 const profilePictureButton = document.getElementById('profile-picture-button')
 const skipProfilePicture = document.getElementById('skip-profile-picture')
 
@@ -144,10 +148,32 @@ const cepMask = (value) => {
     return value
 }
 
+const loadingGif = () => {
+    profilePictureStandardImage.src = '../images/loading.gif'
+    profilePictureStandardImage.classList.add('hidden', 'w-1/2', 'h-1/2')
+    profilePictureStandardImage.classList.remove('hidden', 'w-full', 'h-full')
+}
+
+const getProfilePictureImage = async() => {
+
+    loadingGif()
+    const url = await uploadImage(profilePicture.files[0], 'profile-icon')
+    console.log(url);
+    localStorage.setItem('profile-icon-url', url)
+    changePictureImagePreview(url)
+
+}
+
+const changePictureImagePreview = (img) => {
+    profilePictureLabel.style.backgroundImage = `url('${img}')`
+    profilePictureStandardImage.classList.add('hidden')
+}
+
 passwordInput.addEventListener('focus', passwordInputOutline)
 passwordInput.addEventListener('focusout', passwordInputOutline)
 showPasswordButton.addEventListener('click', showPassword)
 staySignedInput.addEventListener('click', checkInput)
+profilePicture.addEventListener('change', getProfilePictureImage)
 
 phoneInput.addEventListener('keyup', () => {
     phoneInput.value = phoneMask(phoneInput.value)
