@@ -158,7 +158,6 @@ const getProfilePictureImage = async() => {
 
     loadingGif()
     const url = await uploadImage(profilePicture.files[0], 'profile-icon')
-    console.log(url);
     localStorage.setItem('profile-icon-url', url)
     changePictureImagePreview(url)
 
