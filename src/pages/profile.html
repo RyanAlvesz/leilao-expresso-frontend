@@ -10,8 +10,94 @@
     <link rel="stylesheet" href="../css/output.css">
     <title>Meu perfil</title>
 </head>
-<body class="font-poppins min-h-screen">
-    <main class="">
+<body class="h-screen w-screen font-poppins overflow-hidden">
+
+    <header class="w-full px-11 h-24 flex items-center justify-between border-blue-3 border-b-2 border-opacity-60">
+        <h1 class="font-black text-blue-3 text-3xl leading-8">LEILÃO EXPRESSO</h1>
+        <div class="flex items-center gap-4">
+          <p class="text-blue-3 font-semibold text-2xl">Taylor Swift</p>
+          <img src="./images/Ellipse 4.png" width="50px" alt="">
+        </div>
+    </header>
+
+    <main class="w-full h-full px-40 pt-20">
+        <section class="flex gap-3 flex-col w-full h-full bg-blue-3 text-white rounded-t-3xl px-40 pt-20 text-white">
+            <h1 class="text-6xl font-black">CADASTRO DE ITEM</h1>
+            <div class="flex w-full h-full gap-8">
+
+                <section class="h-5/6 w-1/2 flex flex-col gap-5 pt-8">
+                    <form class="flex flex-col gap-2">
+                        <label>Titulo do item:</label>
+                        <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="text">
+                    </form>
+
+                    <form class="flex flex-col gap-2">
+                        <label>Descrição do item:</label>
+                        <input class="rounded-lg px-3 py-2 h-28 text-blue-3 border-b-blue-3" placeholder="Descrição detalhada do item que está sendo colocado em leilão, incluindo características importantes, condição, idade, marca, e qualquer outra informação relevante." type="text">
+                    </form>
+
+                    <form class="flex flex-col gap-2">
+                        <label>Informações do vendedor:</label>
+                        <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="text" placeholder="Nome/Empresa *">
+                        <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="tel" placeholder="Telefone">
+                        <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="email" placeholder="E-mail">
+                    </form>
+
+                    <form class="flex gap-2">
+                        <div class="flex flex-col w-1/2">
+                            <label>Documentação:</label>
+                            <div class="bg-white rounded-lg flex gap-3 py-2 px-3">
+                                <img src="./images/72145 1.png"/>
+                                <input type="email" placeholder="E-mail">
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col w-1/2">
+                            <label>Imagem:</label>
+                            <div class="bg-white rounded-lg flex gap-3 py-2 px-3">
+                                <input type="image" src="./images/72145 1.png" alt="">
+                                <p class="text-gray-2">Inserir arquivo</p>
+                            </div>
+                        </div>
+                    </form>
+
+                </section>
+
+                <section class="h-5/6 w-1/2 flex flex-col gap-5 pt-8">
+
+                    <form class="flex gap-2">
+                        <div class="flex flex-col w-1/2">
+                            <label>Valor inicial:</label>
+                            <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="R$" type="text"></form>
+                        </div>
+
+                      
+                    </form>
+
+                    <form class="flex flex-col gap-2">
+                        <label>Informações sobre o histórico do item:</label>
+                        <input class="rounded-lg px-3 py-2 h-20 text-blue-3 border-b-blue-3" placeholder="Se o item tiver alguma história relevante, como ser uma peça de colecionador ou ter sido de propriedade de uma figura pública" type="text">
+                    </form>
+
+                    <form class="flex flex-col gap-2">
+                        <label>Condições de venda:</label>
+                        <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Prazos de pagamento" type="text">
+                        <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Termos de devolução" type="text">
+                    </form>
+
+                
+                    <div class="h-52 flex justify-end items-end p-2 ">
+                        <button class="bg-brown-3 rounded-lg px-10 py-3 text-xl text-black font-bold">Cadastrar</button>
+                    </div>
+                    
+                    
+                </section>
+                
+            </div>
+        </section>
+
     </main>
+
+
 </body>
 </html>
