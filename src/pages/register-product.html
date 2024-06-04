@@ -12,102 +12,120 @@
 </head>
 <body class="h-screen w-screen font-poppins">
 
-    <header class="w-full px-11 h-24 flex items-center justify-between border-blue-3 border-b-2 border-opacity-60">
-        <h1 class="font-black text-blue-3 text-3xl leading-8">LEILÃO EXPRESSO</h1>
+    <header class="w-full px-12 h-[10vh] flex items-center justify-between border-blue-3 border-b-2 border-opacity-60">
+        <div class="flex items-center justify-center h-full gap-4">
+          <img class="h-4/5"  src="../images/logo.png" alt="Logo LEILÃO EXPRESSO">
+          <h1 class="tracking-widest font-black text-blue-3 text-3xl leading-8">LEILÃO EXPRESSO</h1>
+        </div>
         <div class="flex items-center gap-4">
           <p class="text-blue-3 font-semibold text-2xl">Taylor Swift</p>
-          <img src="./images/Ellipse 4.png" width="50px" alt="">
+          <img src="../images/svg/clock.svg" class="h-[calc(10vh-3rem)] w-[calc(10vh-3rem)] rounded-full bg-gray-2 object-cover">
         </div>
     </header>
 
-    <main class="w-full h-full px-40 pt-20">
+    <main class="w-full h-[90vh] px-40 pt-10">
         <section class="flex gap-3 flex-col w-full h-full bg-blue-3 text-white rounded-t-3xl px-40 pt-20 text-white">
-            <h1 class="text-6xl font-black">CADASTRO DE ITEM</h1>
-            <div class="flex w-full h-full gap-8">
+           
+            <h1 class="tracking-widest text-5xl font-black">CADASTRO DE ITEM</h1>
 
-                <section class="h-5/6 w-1/2 flex flex-col gap-10 pt-8">
-                    <form class="flex flex-col gap-2">
+            <div class="flex w-full h-full gap-7">
+
+                <form class="h-5/6 w-1/2 flex flex-col gap-7 pt-8">
+
+                    <fieldset class="flex flex-col gap-2">
                         <label>Titulo do item:</label>
                         <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Nome do produto" type="text">
-                    </form>
+                    </fieldset>
 
-                    <form class="flex flex-col gap-2">
+                    <fieldset class="flex flex-col gap-2">
                         <label>Descrição do item:</label>
-                        <textarea class="rounded-lg px-3 py-2 h-28 text-blue-3 border-b-blue-3" placeholder="Descrição detalhada do item que está sendo colocado em leilão, incluindo características importantes,&#10 condição, idade, marca, e qualquer outra informação relevante." style="resize: none" type="text"></textarea>
-                    </form>
+                        <textarea class="rounded-lg px-3 py-2 h-24 text-blue-3 border-b-blue-3" placeholder="Descrição detalhada do item que está sendo colocado em leilão, incluindo características importantes,&#10 condição, idade, marca, e qualquer outra informação relevante." style="resize: none" type="text"></textarea>
+                    </fieldset>
 
-                    <form class="flex flex-col gap-2">
+                    <fieldset class="flex flex-col gap-2">
                         <label>Informações do vendedor:</label>
                         <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="text" placeholder="Nome/Empresa *">
                         <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="tel" placeholder="Telefone">
                         <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="email" placeholder="E-mail">
-                    </form>
+                    </fieldset>
 
-                    <form class="flex gap-2">
-                        <div class="flex flex-col w-1/2 gap-2">
-                            <label>Documentação:</label>
-                            <div class="bg-white rounded-lg flex gap-3 py-2 px-3">
-                                <img src="../images/svg/insert-arquivo.svg" alt="">
-                                <input class="border-none" type="file" placeholder="Inserir arquivo">
-                        
-                                <button id="profile-picture-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
-                                    ✓
-                                </button>
+                    <fieldset class="flex w-full gap-2">
 
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col w-1/2 gap-2">
-                            <label>Imagens:</label>
-                            <div class="bg-white rounded-lg flex gap-3 py-2 px-3">
-                                <img src="../images/svg/insert-arquivo.svg" alt="">
-                                <input type="file" placeholder="Inserir arquivo">
+                        <div class="flex flex-col w-1/2 gap-2 ">
                             
-
-                            </div>
+                            <p>Documentos:</p>
+                            <fieldset class="flex bg-white rounded-xl p-2 justify-between" id="form-profile-picture" class="">
+                                <label id="profile-picture-label" for="profile-picture" class="w-full flex 
+                                items-center justify-between py-4 px-2 bg-center bg-cover h-5
+                                cursor-pointer">
+        
+                                    <div class="h-6 flex gap-2">
+                                        <img src="../images/svg/insert-arquivo.svg" alt="Pessoa">
+                                        <p class="text-gray-2 opacity-60">Anexar aquivo</p>
+                                    </div>
+        
+                                    <input type="file" id="profile-picture" class="hidden" accept="image/*">
+        
+                                </label>
+        
+                            </fieldset>
                         </div>
-                    </form>
 
-                    <form id="form-profile-picture" class="w-full flex flex-col items-center justify-center">
-                        <label id="profile-picture-label" for="profile-picture" class="w-[20vh] h-[20vh] flex items-center justify-center p-4 bg-gray-3 bg-center bg-cover rounded-full mb-12 cursor-pointer relative">
-                            <img id="profile-picture-standard-image" src="../images/svg/auction.svg" alt="Martelo" class="w-full h-full">
-                            <div class="h-1/4 w-1/4 rounded-full bg-blue-3 p-2 absolute bottom-0 right-0">
-                                <img src="../images/svg/camera.svg" alt="Pessoa" class="w-full h-full">
-                            </div>
-                            <input type="file" id="profile-picture" class="hidden" accept="image/*">
-                        </label>
-                        <button id="profile-picture-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
-                            Salvar
-                        </button>
-                    </form>
+                        <div class="flex flex-col w-1/2 gap-2">
+                            
+                            <p>Imagem:</p>
+                            <fieldset class="flex bg-white rounded-xl p-2 justify-between" id="form-profile-picture" class="">
+                                <label id="profile-picture-label" for="profile-picture" class="w-full flex 
+                                items-center justify-between py-4 px-2 bg-center bg-cover h-5
+                                cursor-pointer">
+        
+                                    <div class="h-6 flex gap-2">
+                                        <img src="../images/svg/insert-arquivo.svg" alt="Pessoa">
+                                        <p class="text-gray-2 opacity-60">Anexar aquivo</p>
+                                    </div>
+        
+                                    <input type="file" id="profile-picture" class="hidden" accept="image/*">
+        
+                                </label>
+        
+                            </fieldset>
+                        </div>
 
-                </section>
+                    </fieldset>
 
-                <section class="h-5/6 w-1/2 flex flex-col gap- pt-8">
+                </form>
 
-                    <form class="flex gap-2">
+                <form class="h-5/6 w-1/2 flex flex-col gap-7 pt-8">
+
+                    <fieldset class="flex gap-2">
                         <div class="flex flex-col w-1/2 gap-2">
                             <label>Valor inicial:</label>
                             <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="R$" type="text">
-                    </form>
+                        </div>
 
-                    <form class="flex flex-col gap-2">
+                        <div class="flex flex-col w-1/2 gap-2">
+                            <label>Preço de reserva:</label>
+                            <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="R$" type="text">
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="flex flex-col gap-2">
                         <label>Informações sobre o histórico do item:</label>
-                        <input class="rounded-lg px-3 py-2 h-20 text-blue-3 border-b-blue-3" placeholder="Se o item tiver alguma história relevante, como ser uma peça de colecionador ou ter sido de propriedade de uma figura pública" type="text">
-                    </form>
+                        <textarea class="rounded-lg px-3 py-2 h-20 text-blue-3 border-b-blue-3" placeholder="Se o item tiver alguma história relevante, como ser uma peça de colecionador ou ter sido de propriedade de uma figura pública" style="resize: none" type="text"></textarea>
+                    </fieldset>
 
-                    <form class="flex flex-col gap-2">
+                    <fieldset class="flex flex-col gap-2">
                         <label>Condições de venda:</label>
                         <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Prazos de pagamento" type="text">
                         <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Termos de devolução" type="text">
-                    </form>
+                    </fieldset>
 
-                
-                    <div class="h-52 flex justify-end items-end p-2 ">
+
+                    <fieldset class="h-52 flex justify-end items-end p-2 ">
                         <button class="bg-brown-3 rounded-lg px-10 py-3 text-xl text-black font-bold">Cadastrar</button>
-                    </div>
+                    </fieldset>
 
-                </section>
+                </form>
                 
             </div>
         </section>
