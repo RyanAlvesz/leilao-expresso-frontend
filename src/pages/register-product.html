@@ -6,11 +6,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./src/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/output.css">
     <title>Cadastrar Produto</title>
 </head>
-<body class="h-screen w-screen font-poppins overflow-hidden">
+<body class="h-screen w-screen font-poppins">
 
     <header class="w-full px-11 h-24 flex items-center justify-between border-blue-3 border-b-2 border-opacity-60">
         <h1 class="font-black text-blue-3 text-3xl leading-8">LEILÃO EXPRESSO</h1>
@@ -25,15 +25,15 @@
             <h1 class="text-6xl font-black">CADASTRO DE ITEM</h1>
             <div class="flex w-full h-full gap-8">
 
-                <section class="h-5/6 w-1/2 flex flex-col gap-5 pt-8">
+                <section class="h-5/6 w-1/2 flex flex-col gap-10 pt-8">
                     <form class="flex flex-col gap-2">
                         <label>Titulo do item:</label>
-                        <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="text">
+                        <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Nome do produto" type="text">
                     </form>
 
                     <form class="flex flex-col gap-2">
                         <label>Descrição do item:</label>
-                        <input class="rounded-lg px-3 py-2 h-28 text-blue-3 border-b-blue-3" placeholder="Descrição detalhada do item que está sendo colocado em leilão, incluindo características importantes, condição, idade, marca, e qualquer outra informação relevante." type="text">
+                        <textarea class="rounded-lg px-3 py-2 h-28 text-blue-3 border-b-blue-3" placeholder="Descrição detalhada do item que está sendo colocado em leilão, incluindo características importantes,&#10 condição, idade, marca, e qualquer outra informação relevante." style="resize: none" type="text"></textarea>
                     </form>
 
                     <form class="flex flex-col gap-2">
@@ -44,32 +44,51 @@
                     </form>
 
                     <form class="flex gap-2">
-                        <div class="flex flex-col w-1/2">
+                        <div class="flex flex-col w-1/2 gap-2">
                             <label>Documentação:</label>
                             <div class="bg-white rounded-lg flex gap-3 py-2 px-3">
-                                <img src="./images/72145 1.png"/>
-                                <input type="email" placeholder="E-mail">
+                                <img src="../images/svg/insert-arquivo.svg" alt="">
+                                <input class="border-none" type="file" placeholder="Inserir arquivo">
+                        
+                                <button id="profile-picture-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
+                                    ✓
+                                </button>
+
                             </div>
                         </div>
 
-                        <div class="flex flex-col w-1/2">
-                            <label>Imagem:</label>
+                        <div class="flex flex-col w-1/2 gap-2">
+                            <label>Imagens:</label>
                             <div class="bg-white rounded-lg flex gap-3 py-2 px-3">
-                                <input type="image" src="./images/72145 1.png" alt="">
-                                <p class="text-gray-2">Inserir arquivo</p>
+                                <img src="../images/svg/insert-arquivo.svg" alt="">
+                                <input type="file" placeholder="Inserir arquivo">
+                            
+
                             </div>
                         </div>
                     </form>
 
+                    <form id="form-profile-picture" class="w-full flex flex-col items-center justify-center">
+                        <label id="profile-picture-label" for="profile-picture" class="w-[20vh] h-[20vh] flex items-center justify-center p-4 bg-gray-3 bg-center bg-cover rounded-full mb-12 cursor-pointer relative">
+                            <img id="profile-picture-standard-image" src="../images/svg/auction.svg" alt="Martelo" class="w-full h-full">
+                            <div class="h-1/4 w-1/4 rounded-full bg-blue-3 p-2 absolute bottom-0 right-0">
+                                <img src="../images/svg/camera.svg" alt="Pessoa" class="w-full h-full">
+                            </div>
+                            <input type="file" id="profile-picture" class="hidden" accept="image/*">
+                        </label>
+                        <button id="profile-picture-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
+                            Salvar
+                        </button>
+                    </form>
+
                 </section>
 
-                <section class="h-5/6 w-1/2 flex flex-col gap-5 pt-8">
+                <section class="h-5/6 w-1/2 flex flex-col gap- pt-8">
 
                     <form class="flex gap-2">
-                        <div class="flex flex-col w-1/2">
+                        <div class="flex flex-col w-1/2 gap-2">
                             <label>Valor inicial:</label>
-                            <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="R$" type="text"></form>
-                        </div>
+                            <input class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="R$" type="text">
                     </form>
 
                     <form class="flex flex-col gap-2">
@@ -92,9 +111,6 @@
                 
             </div>
         </section>
-
     </main>
-
-
 </body>
 </html>
