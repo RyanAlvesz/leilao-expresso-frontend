@@ -6,12 +6,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./src/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/output.css">
     <title>Vencedor</title>
 </head>
 <body class="font-poppins min-h-screen">
-    <main class="">
+    <header class="w-full px-6 h-[10vh] flex items-center justify-between border-gray-2 border-b-2 border-opacity-60">
+        <div class="flex items-center justify-center h-full gap-4">
+          <img class="h-4/5"  src="../images/logo.png" alt="Logo LEILÃO EXPRESSO">
+          <h1 class="tracking-widest font-black text-blue-3 text-3xl leading-8">LEILÃO EXPRESSO</h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <p id="user-name" class="text-blue-3 font-semibold text-2xl">Taylor Swift</p>
+          <a href="./profile.html" class="h-[calc(10vh-2rem)] w-[calc(10vh-2rem)] rounded-full border-2 border-brown-3 overflow-hidden">
+              <img id="user-icon" src="https://firebasestorage.googleapis.com/v0/b/acme-filmes.appspot.com/o/images%2Factors%2Fspeak-now-5.jpg?alt=media&token=590aaa3d-6585-410f-ac4b-f3de0ed55b8f" class="h-full w-full bg-gray-2 object-cover ">
+          </a>
+        </div>
+    </header>
+    <main class="flex items-center flex-col">
+        <section class="h-[45vh] w-1/2 flex items-center gap-28 p-28 ">
+            <a href="./profile.html" class="h-[30vh] w-[30vh] rounded-full overflow-hidden">
+                <img id="user-icon" src="https://firebasestorage.googleapis.com/v0/b/acme-filmes.appspot.com/o/images%2Factors%2Fspeak-now-5.jpg?alt=media&token=590aaa3d-6585-410f-ac4b-f3de0ed55b8f" class="h-full w-full bg-gray-2 object-cover ">
+            </a>
+            <div class="flex flex-col gap-3 text-blue-3">
+                <p class="font-bold text-xl">@Flávio Ricardo</p>
+                <p class="font-bold text-3xl">Você venceu!</p>
+                <div>
+                    <p class="text-black text-xl">Entre em contato com Ryan:</p>
+                    <p class="text-black">RyanTaylor@gmail.com</p>
+                </div>
+            </div>
+            
+        </section>
+        <section class="h-[30vh] w-3/5 px-12 text-blue-3 gap-10 flex border-2 items-center justify-evenly border-gold-3 bg-gold-3 bg-opacity-20 rounded-3xl">
+        
+            <div class="h-[70%] w-[30%] rounded-2xl overflow-hidden border-2 border-gold-3">
+                <img id="user-icon" src="https://firebasestorage.googleapis.com/v0/b/acme-filmes.appspot.com/o/images%2Factors%2Fspeak-now-5.jpg?alt=media&token=590aaa3d-6585-410f-ac4b-f3de0ed55b8f" class="h-full w-full bg-gray-2 object-cover ">
+            </div>
+
+            <div class="flex flex-col h-[80%] w-1/2 justify-between py-6">
+                <p class="font-semibold text-2xl">Aro/Roda - Moto do ano MT03 Azul Neon</p>
+                <div>
+                    <p>Preço inicial: R$ 749.99</p>
+                    <p class="text-xl">Seu Preço:<span class="text-2xl font-bold px-1">R$ 1,000.00</span></p>
+                </div>
+            </div>
+
+            <div class="w-2/3">
+                <p  class="pb-3 font-semibold">Sobre o leilão:</p>
+                <p>Vendedor: Ryan Alves (225 Vendas / 99.6% Positivas)</p>
+                <p>Finalizou em: 09/05/2024 - 11:06:03</p>
+                <p>Registrado: 04/08/21</p>
+                <p>São Paulo - SP (Brasil)</p>
+                <p>Tempo para pagamento: 6 dias, 20 horas</p>
+            </div>
+        </section>
     </main>
 </body>
 </html>
