@@ -10,7 +10,11 @@ const passwordInputOutline = () => {
 
 const showPassword = () => {
     passwordInput.type != 'password' ? passwordInput.type = 'password' : passwordInput.type = 'text'
-    passwordInput.type != 'password' ? showPasswordButton.children[0].src = '\/src\/images\/svg\/eye-closed.svg' : showPasswordButton.children[0].src = '\/src\/images\/svg\/eye.svg'
+    if(passwordInput.classList.contains('login')){
+        passwordInput.type != 'password' ? showPasswordButton.children[0].src = './src/images/svg/eye-closed.svg' : showPasswordButton.children[0].src = './src/images/svg/eye.svg'
+    } else {
+        passwordInput.type != 'password' ? showPasswordButton.children[0].src = '../images/svg/eye-closed.svg' : showPasswordButton.children[0].src = '../images/svg/eye.svg'
+    }
 }
 
 const checkInput = () => {
