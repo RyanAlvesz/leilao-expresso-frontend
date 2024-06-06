@@ -18,8 +18,6 @@ const itemReturnTerm = document.getElementById('item-return-term')
 
 // Declarando botão de ação do cadastro
 const buttonItem = document.getElementById('button-register-item') 
-
-
 // Funcao que armazena o Toast de sucesso
 const SuccessMessage = () => {
 
@@ -41,8 +39,6 @@ const SuccessRegister = async() => {
 }
 
 SuccessRegister()
-
-
 
 const phoneMask = (value) => {
     if (!value) return ''
