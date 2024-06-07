@@ -1,6 +1,7 @@
 'use strict'
 
 import { uploadImage } from "./firebase.js"
+import { postUser, postAddress } from './functions.js'
 
 // Register Account
 const registerSection = document.getElementById('register-account')
@@ -10,7 +11,6 @@ const phoneInput = document.getElementById('phone')
 const cpfInput = document.getElementById('cpf')
 const emailInput = document.getElementById('email')
 const passwordInput = document.getElementById('password')
-const showPasswordButton = document.getElementById('show-password')
 const staySignedInput = document.getElementById('stay-signed')
 const registerButton = document.getElementById('register-button')
 
@@ -20,11 +20,10 @@ const addressForm = document.getElementById('form-address')
 const cepInput = document.getElementById('cep')
 const placeInput = document.getElementById('place')
 const houseNumberInput = document.getElementById('house-number')
-const complementInput = document.getElementById('complement')
 const neighborhoodInput = document.getElementById('neighborhood')
 const cityInput = document.getElementById('city')
 const addressButton = document.getElementById('address-button')
-const skipAddress = document.getElementById('skip-address')
+const returnAddress = document.getElementById('return-address')
 
 // Register Profile Picture
 const profilePictureSection = document.getElementById('register-profile-picture')
@@ -34,26 +33,9 @@ const profilePictureLabel = document.getElementById('profile-picture-label')
 const profilePictureStandardImage = document.getElementById('profile-picture-standard-image')
 const profilePictureButton = document.getElementById('profile-picture-button')
 const skipProfilePicture = document.getElementById('skip-profile-picture')
+const returnProfilePicture = document.getElementById('return-profile-picture')
 
-const removeRegisterSection = () => {
-    registerSection.classList.add('hidden')
-}
-
-const showAddressSection = () => {
-    addressSection.classList.remove('-z-10')
-    addressSection.classList.remove('opacity-0')
-    addressSection.classList.add('opacity-100')
-}
-
-const removeAddressSection = () => {
-    addressSection.classList.add('hidden')
-}
-
-const showProfilePicureSection = () => {
-    profilePictureSection.classList.remove('-z-10')
-    profilePictureSection.classList.remove('opacity-0')
-    profilePictureSection.classList.add('opacity-100')
-}
+// ALERT MESSAGES
 
 const cepErrorMessage = () => {
     Swal.fire({
@@ -67,6 +49,135 @@ const cepErrorMessage = () => {
         heightAuto: false
     })  
 }
+
+const inputValidationErrorMessage = () => {
+    Swal.fire({
+        position: 'center',
+        timer: 2000,
+        title: '<p class="text-2xl text-blue-3"> Preencha todas as informações corretamente<p>',
+        icon: 'warning',
+        iconColor: '#E8B455',
+        showConfirmButton: false,
+        width: '25rem',
+        heightAuto: false
+    })  
+}
+
+const loadingMessage = () => {
+    Swal.fire({
+        position: 'center',
+        title: '<p class="text-2xl text-white"> Cadastrando... <p>',
+        imageUrl: "../images/loading.gif",
+        imageWidth: '20%',
+        background: "#E8B455",
+        imageAlt: "Carregamento",
+        showConfirmButton: false,
+        padding: '0 0 28px 0',
+        width: '25rem',
+        heightAuto: false
+    })
+}
+
+// INPUT Validations
+
+const userInfoValidation = () => {
+    let status = true
+    if (
+        nameInput.value == '' ||
+        phoneInput.value == '' ||
+        phoneInput.value.length != 15 ||
+        cpfInput.value == '' ||
+        cpfInput.value.length != 14 ||
+        emailInput.value == '' ||
+        !emailInput.value.includes('@') ||
+        !emailInput.value.includes('.com') ||
+        passwordInput.value == '' 
+    ) {
+        inputValidationErrorMessage()
+        status = false
+    }
+    return status
+}
+
+const addressInfoValidation = async() => {
+    let status = true
+    if (
+        cepInput.value == '' ||
+        cepInput.value.length != 9 ||
+        placeInput.value == '' ||
+        houseNumberInput.value == '' ||
+        neighborhoodInput.value == '' ||
+        cityInput.value == '' ||
+        await getInfoCEP(cepInput.value).erro
+    ) {
+        inputValidationErrorMessage()
+        status = false
+    }
+    return status
+}
+
+// SECTION ANIMATION
+
+const removeRegisterSection = () => {
+    addressSection.classList.add('-z-10')
+    registerSection.classList.add('opacity-0')
+    registerSection.classList.remove('opacity-100')    
+}
+
+const showRegisterSection = () => {
+    registerSection.classList.remove('-z-10')
+    registerSection.classList.remove('opacity-0')        
+    registerSection.classList.add('opacity-100')
+}
+
+const showAddressSection = () => {
+    addressSection.classList.remove('-z-10')
+    addressSection.classList.remove('opacity-0')
+    addressSection.classList.add('opacity-100')
+}
+
+const removeAddressSection = () => {
+    addressSection.classList.add('-z-10')
+    addressSection.classList.add('opacity-0')
+    addressSection.classList.remove('opacity-100')        
+}
+
+const showProfilePicureSection = () => {
+    profilePictureSection.classList.remove('-z-10')
+    profilePictureSection.classList.remove('opacity-0')
+    profilePictureSection.classList.add('opacity-100')
+}
+
+const removeProfilePictureSection = () => {
+    profilePictureSection.classList.add('-z-10')
+    profilePictureSection.classList.add('opacity-0')
+    profilePictureSection.classList.remove('opacity-100') 
+}
+
+registerButton.addEventListener('click', () => {
+    if(userInfoValidation()){
+        removeRegisterSection()
+        showAddressSection()
+    }
+})
+
+addressButton.addEventListener('click', async() => {
+    if(await addressInfoValidation()){
+        removeAddressSection()
+        showProfilePicureSection()
+    }
+})
+
+returnAddress.addEventListener('click', () => {
+    removeAddressSection()
+    showRegisterSection()
+})
+
+returnProfilePicture.addEventListener('click', () => {
+    removeProfilePictureSection()
+    showAddressSection()
+})
+
 
 const searchAddressByCEP = async() => {
 
@@ -97,6 +208,7 @@ const searchAddressByCEP = async() => {
 
 }
 
+// Via CEP API
 const getInfoCEP = async(cep) => {
 
     const url = `https://viacep.com.br/ws/${cep}/json/`
@@ -107,6 +219,13 @@ const getInfoCEP = async(cep) => {
 
 }
 
+cepInput.addEventListener('keyup', (e) => {
+    if(e.key == 'Enter'){
+        searchAddressByCEP()
+    }
+})
+
+// Máscaras de INPUT
 const phoneMask = (value) => {
     if (!value) return ''
     value = value.replace(/\D/g,'')
@@ -114,6 +233,10 @@ const phoneMask = (value) => {
     value = value.replace(/(\d)(\d{4})$/,'$1-$2')
     return value
 }
+
+phoneInput.addEventListener('keypress', () => {
+    phoneInput.value = phoneMask(phoneInput.value)
+})
 
 const cpfMask = (value) => {
     if (!value) return ''
@@ -124,6 +247,10 @@ const cpfMask = (value) => {
     return value
 }
 
+cpfInput.addEventListener('keypress', () => {
+    cpfInput.value = cpfMask(cpfInput.value)
+})
+
 const cepMask = (value) => {
     if (!value) return ''
     value = value.replace(/\D/g,'')
@@ -131,6 +258,11 @@ const cepMask = (value) => {
     return value
 }
 
+cepInput.addEventListener('keypress', () => {
+    cepInput.value = cepMask(cepInput.value)
+})
+
+// GIF de carregamento de imagme
 const loadingGif = () => {
     profilePictureStandardImage.src = '../images/loading.gif'
     profilePictureStandardImage.classList.add('hidden', 'w-1/2', 'h-1/2')
@@ -140,10 +272,12 @@ const loadingGif = () => {
 const getProfilePictureImage = async() => {
 
     loadingGif()
+    profilePictureButton.disabled = true
     const url = await uploadImage(profilePicture.files[0], 'profile-icon')
     localStorage.setItem('profile-icon-url', url)
     changePictureImagePreview(url)
-
+    profilePictureButton.disabled = false
+    
 }
 
 const changePictureImagePreview = (img) => {
@@ -153,30 +287,59 @@ const changePictureImagePreview = (img) => {
 
 profilePicture.addEventListener('change', getProfilePictureImage)
 
-phoneInput.addEventListener('keyup', () => {
-    phoneInput.value = phoneMask(phoneInput.value)
-})
+// POST USER
 
-cpfInput.addEventListener('keyup', () => {
-    cpfInput.value = cpfMask(cpfInput.value)
-})
+// JSON com as informações do usuário que será preenchido
+let userInfo = {}
 
-cepInput.addEventListener('keyup', () => {
-    cepInput.value = cepMask(cepInput.value)
-})
+const postAddressFun = async() => {
 
-cepInput.addEventListener('keyup', (e) => {
-    if(e.key == 'Enter'){
-        searchAddressByCEP()
+    const address = {
+        cep: cepInput.value,
+        logradouro: placeInput.value,
+        numero_casa: houseNumberInput.value,
+        bairro: neighborhoodInput.value,
+        cidade: cityInput.value
     }
-})
 
-registerButton.addEventListener('click', () => {
-    removeRegisterSection()
-    showAddressSection()
-})
+    const addressID = await postAddress(address) 
+    return addressID.ederecos.id
 
-skipAddress.addEventListener('click', () => {
-    removeAddressSection()
-    showProfilePicureSection()
-})
+}
+
+const postUserFun = async(addressID) => {
+
+    let user = {
+        nome: nameInput.value,
+        email: emailInput.value,
+        telefone: phoneInput.value,
+        senha: passwordInput.value,
+        cpf: cpfInput.value,
+        endereco_id: addressID.value
+    }
+
+    if (localStorage.getItem('profile-icon-url')) {
+        user.foto_perfil = localStorage.getItem('profile-icon-url')
+    } else {
+        user.foto_perfil = 'https://firebasestorage.googleapis.com/v0/b/leilao-expresso.appspot.com/o/profile-icon%2Ficon.png?alt=media&token=2fbadc66-0b13-4eed-8360-7f87ea1076b7'
+    }
+
+    await postAddress(user)
+
+}
+
+const postInfos = async() => {
+
+    loadingMessage()    
+    const addressID = await postAddressFun()
+    await postUserFun(addressID)
+    localStorage.clear()
+    if(staySignedInput){
+        localStorage.setItem('staySigned', 'true')
+    }
+    window.location = './home.html'
+
+}
+
+profilePictureButton.addEventListener('click', postInfos)
+skipProfilePicture.addEventListener('click', postInfos)

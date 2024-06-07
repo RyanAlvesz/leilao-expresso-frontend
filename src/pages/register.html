@@ -16,7 +16,7 @@
 </head>
 <body class="font-poppins min-h-screen grid grid-cols-[6fr_7fr] max-[1250px]:grid-cols-2 max-md:flex">
     <main class="flex relative px-[6vw] max-md:w-full max-md:px-[8vw] max-[340px]:px-[6vw]">
-        <section id="register-account" class="flex flex-col items-center justify-center gap-8 py-4 w-full h-full bg-white max-md:gap-6 max-md:py-12">
+        <section id="register-account" class="flex flex-col items-center justify-center gap-8 py-4 w-full h-full bg-white ease-linear duration-300 max-md:gap-6 max-md:py-12">
             <h2 class="text-blue-3 font-bold tracking-widest text-headline-1 max-md:text-display-1"> Sign Up </h2>
             <form id="form-account" class="w-full flex flex-col items-center justify-center">
                 <input type="text" id="name" autocomplete="off" required placeholder="Nome" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
@@ -45,7 +45,7 @@
                 <a href="../../index.html" class="text-blue-3 font-bold"> Entrar </a>
             </span>
         </section>
-        <section id="register-address" class="flex flex-col items-center justify-center gap-8 w-full h-full ease-linear duration-500 absolute inset-0 px-[6vw] opacity-0 -z-10 bg-white max-md:gap-6 max-md:px-[8vw] max-[340px]:px-[6vw] max-md:py-12">
+        <section id="register-address" class="flex flex-col items-center justify-center gap-8 w-full h-full ease-linear duration-300 absolute inset-0 px-[6vw] opacity-0 -z-10 bg-white max-md:gap-6 max-md:px-[8vw] max-[340px]:px-[6vw] max-md:py-12">
             <h2 class="text-blue-3 font-bold tracking-widest text-headline-1 max-md:text-display-1"> Endereço </h2>
             <form id="form-address" class="w-full flex flex-col items-center justify-center">
                 <input type="text" id="cep" autocomplete="off" required maxlength="9" placeholder="CEP" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
@@ -53,20 +53,19 @@
                     <input type="text" id="place" autocomplete="off" required placeholder="Logradouro" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 disabled:bg-gray-3/30 max-md:h-14 max-md:text-lg max-md:px-3">
                     <input type="number" id="house-number" autocomplete="off" required placeholder="N°" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
                 </div>
-                <input type="text" id="complement" autocomplete="off" placeholder="Complemento" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
                 <input type="text" id="neighborhood" autocomplete="off" required placeholder="Bairro" class="w-full h-14 rounded-lg py-2 px-4 mb-4 text-xl bg-gray-3 outline-brown-3 disabled:bg-gray-3/30 max-md:h-14 max-md:text-lg max-md:px-3">
                 <input type="text" id="city" autocomplete="off" required placeholder="Cidade" class="w-full h-14 rounded-lg py-2 px-4 mb-8 text-xl bg-gray-3 outline-brown-3 disabled:bg-gray-3/30 max-md:h-14 max-md:text-lg max-md:px-3">
                 <button id="address-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
                     Cadastrar
                 </button>
             </form>
-            <button id="skip-address" class="w-full flex justify-end">
+            <button id="return-address" class="w-full flex justify-start">
                 <span class="text-2xl text-blue-3 hover:underline font-bold max-[1250px]:text-xl max-[1000px]:text-lg max-[900px]:text-base max-md:text-xl max-sm:text-base max-[340px]:text-sm">
-                    Pular
+                    Voltar
                 </span>
             </button>
         </section>
-        <section id="register-profile-picture" class="flex flex-col items-center justify-center gap-12 w-full h-full ease-linear duration-500 absolute inset-0 px-[6vw] opacity-0 -z-10 bg-white max-md:justify-start max-md:px-[8vw] max-[340px]:px-[6vw] max-md:py-16">
+        <section id="register-profile-picture" class="flex flex-col items-center justify-center gap-12 w-full h-full ease-linear duration-300 absolute inset-0 px-[6vw] opacity-0 -z-10 bg-white max-md:justify-start max-md:px-[8vw] max-[340px]:px-[6vw] max-md:py-16">
             <h2 class="text-blue-3 font-bold text-center tracking-widest text-5xl max-md:text-title-1"> Foto de Perfil </h2>
             <form id="form-profile-picture" class="w-full flex flex-col items-center justify-center">
                 <label id="profile-picture-label" for="profile-picture" class="w-[20vh] h-[20vh] flex items-center justify-center p-4 bg-gray-3 bg-center bg-cover rounded-full mb-12 cursor-pointer relative">
@@ -77,14 +76,17 @@
                     <input type="file" id="profile-picture" class="hidden" accept="image/*">
                 </label>
                 <button id="profile-picture-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
-                    Salvar
+                    Cadastrar
                 </button>
             </form>
-            <button id="skip-profile-picture" class="w-full flex justify-end">
-                <span class="text-2xl text-blue-3 hover:underline font-bold max-[1250px]:text-xl max-[1000px]:text-lg max-[900px]:text-base max-md:text-xl max-sm:text-base max-[340px]:text-sm">
-                    Pular
-                </span>
-            </button>
+            <div class="w-full flex justify-between">
+                <button id="return-profile-picture" class="text-2xl text-blue-3 hover:underline font-bold max-[1250px]:text-xl max-[1000px]:text-lg max-[900px]:text-base max-md:text-xl max-sm:text-base max-[340px]:text-sm">
+                        Voltar
+                </button>
+                <button id="skip-profile-picture" class="text-2xl text-blue-3 hover:underline font-bold max-[1250px]:text-xl max-[1000px]:text-lg max-[900px]:text-base max-md:text-xl max-sm:text-base max-[340px]:text-sm">
+                        Pular
+                </button>
+            </div>
         </section>
     </main>
     <div class="bg-blue-3 flex flex-col items-center justify-center gap-8 max-md:hidden">
