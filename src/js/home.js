@@ -68,7 +68,7 @@ const createItem = (item) => {
 
     button.addEventListener('click', () => {
         localStorage.setItem('batchID', item.id)
-        window.location = './item-info'
+        window.location = './item-info.html'
     })
 
     const DateTime = luxon.DateTime
