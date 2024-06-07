@@ -19,11 +19,54 @@ export const getBatchs = async() => {
 
 // #region USERS
 
-export const postUser = async() => {
+export const postUser = async(user) => {
 
     try {
-        const url = `${apiUrl}/usuario`
-        const response = await fetch(url)
+        const url = `${apiUrl}/usuarios`
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome: user.nome,
+                email: user.email,
+                telefone: user.telefone,
+                senha: user.senha,
+                cpf: user.cpf,
+                endereco_id: user.endereco_id,
+                foto_perfil: user.foto_perfil
+            })
+        }
+        const response = await fetch(url, options)
+        const data = await response.json()
+        return data
+    } catch (error) {
+        return false
+    }
+
+}
+
+// #region ADDRESS
+
+export const postAddress = async(address) => {
+
+    try {
+        const url = `${apiUrl}/usuarios`
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                cep: address.cep,
+                logradouro: address.logradouro,
+                numero_casa: address.numero_casa,
+                bairro: address.bairro,
+                cidade: address.cidade
+            })
+        }
+        const response = await fetch(url, options)
         const data = await response.json()
         return data
     } catch (error) {
