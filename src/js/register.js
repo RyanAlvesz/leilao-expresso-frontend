@@ -22,6 +22,7 @@ const placeInput = document.getElementById('place')
 const houseNumberInput = document.getElementById('house-number')
 const neighborhoodInput = document.getElementById('neighborhood')
 const cityInput = document.getElementById('city')
+const complementInput = document.getElementById('complement')
 const addressButton = document.getElementById('address-button')
 const returnAddress = document.getElementById('return-address')
 
@@ -289,9 +290,6 @@ profilePicture.addEventListener('change', getProfilePictureImage)
 
 // POST USER
 
-// JSON com as informações do usuário que será preenchido
-let userInfo = {}
-
 const postAddressFun = async() => {
 
     const address = {
@@ -301,6 +299,11 @@ const postAddressFun = async() => {
         bairro: neighborhoodInput.value,
         cidade: cityInput.value
     }
+
+    if(complementInput.value = '')
+        address.complemento = null
+    else
+        address.complemento = complementInput.value
 
     const addressID = await postAddress(address) 
     return addressID.ederecos.id
