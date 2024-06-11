@@ -8,11 +8,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./src/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./src/css/output.css">
-    <script src="./src/js/login.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="./src/js/login.js" type="module" defer></script>
+    <script src="./src/js/input-animation.js" defer></script>
     <title>Login</title>
 </head>
-<body class="font-poppins min-h-screen">
-    <main class="">
+<body class="font-poppins min-h-screen grid grid-cols-[7fr_6fr] max-[1250px]:grid-cols-2 max-md:flex">
+    <div class="bg-blue-3 flex flex-col items-center justify-center gap-8 max-md:hidden">
+        <img src="./src/images/logo.png" alt="Martelo" class="w-2/5">
+        <div class="flex flex-col items-center justify-center gap-6 text-white px-4">
+            <h1 class="text-headline-2 uppercase font-bold tracking-[0.6rem] text-center max-[1250px]:text-title-1">Leilão Expresso</h1>
+            <p class="text-4xl text-center font-light max-[1250px]:text-3xl max-[1000px]:text-2xl">Plataforma para leilões de forma expressa e segura!</p>
+        </div>
+    </div>
+    <main class="flex flex-col items-center justify-center px-[6vw] gap-12 max-md:w-full max-md:px-[8vw] max-[340px]:px-[6vw]">
+        <h2 class="text-blue-3 font-bold tracking-widest text-headline-1 max-md:text-display-1"> Login </h2>
+        <form id="login-form" class="w-full flex flex-col items-center justify-center">
+            <input type="text" id="email" autocomplete="off" placeholder="E-mail" class="w-full h-16 rounded-lg py-2 px-4 mb-6 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
+            <div class="flex items-center justify-center w-full h-16 rounded-lg py-2 px-4 mb-6 text-xl bg-gray-3 outline-brown-3 outline-2 max-md:h-14 max-md:text-lg max-md:px-3">
+                <input type="password" id="password" autocomplete="off" placeholder="Senha" class="bg-transparent outline-none grow min-w-fit login">
+                <button type="button" id="show-password" class="h-4/5 outline-none flex-shrink-0">
+                    <img src="./src/images/svg/eye.svg" alt="Olho" class="w-full h-full">
+                </button>
+            </div>
+            <label for="stay-signed" class="flex w-full gap-2 relative pl-8 cursor-pointer mb-12 text-xl select-none max-md:text-lg max-sm:text-base"> 
+                    Lembrar de mim
+                <input type="checkbox" id="stay-signed" class="absolute opacity-0 cursor-pointer w-0 h-0">
+                <span class="absolute top-1/2 -translate-y-1/2 left-0 w-6 h-6 rounded-md ease-linear duration-200 bg-gray-3 p-1">
+                    <img src="./src/images/svg/checkbox-correct.svg" alt="Confirmado" class="hidden">
+                </span>
+            </label>
+            <button id="login-button" type="button" class="font-bold text-2xl w-fit px-12 py-3 bg-brown-3 rounded-lg max-md:px-10 max-md:text-xl">
+                Entrar
+            </button>
+        </form>
+        <span class="flex gap-2 text-2xl max-[1250px]:text-xl max-[1000px]:text-lg max-[900px]:text-base max-md:text-xl max-sm:text-base max-[340px]:text-sm">
+            Não tem uma conta?
+            <a href="./src/pages/register.html" class="text-blue-3 font-bold"> Cadastre-se </a>
+        </span>
     </main>
 </body>
 </html>
