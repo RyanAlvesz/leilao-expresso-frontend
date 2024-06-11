@@ -321,10 +321,10 @@ const postUserFun = async(addressID) => {
     if (localStorage.getItem('profile-icon-url')) {
         user.foto_perfil = localStorage.getItem('profile-icon-url')
     } else {
-        user.foto_perfil = 'https://firebasestorage.googleapis.com/v0/b/leilao-expresso.appspot.com/o/profile-icon%2Ficon.png?alt=media&token=2fbadc66-0b13-4eed-8360-7f87ea1076b7'
+        user.foto_perfil = null
     }
 
-    await postAddress(user)
+    return await postUser(user)
 
 }
 
@@ -332,11 +332,17 @@ const postInfos = async() => {
 
     loadingMessage()    
     const addressID = await postAddressFun()
-    await postUserFun(addressID)
+    const postInfo = await postUserFun(addressID)
     localStorage.clear()
-    if(staySignedInput){
+
+    localStorage.setItem('userId', postInfo.usuario[0].id)
+    localStorage.setItem('userProfileIcon', postInfo.usuario[0].foto_perfil)
+    localStorage.setItem('userName', postInfo.usuario[0].nome)
+
+    if(staySignedInput.checked){
         localStorage.setItem('staySigned', 'true')
     }
+    
     window.location = './home.html'
 
 }
