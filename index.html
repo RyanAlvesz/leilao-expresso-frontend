@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./src/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./src/css/output.css">
-    <script src="./src/js/login.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="./src/js/login.js" type="module" defer></script>
     <script src="./src/js/input-animation.js" defer></script>
     <title>Login</title>
 </head>
@@ -22,7 +23,7 @@
     </div>
     <main class="flex flex-col items-center justify-center px-[6vw] gap-12 max-md:w-full max-md:px-[8vw] max-[340px]:px-[6vw]">
         <h2 class="text-blue-3 font-bold tracking-widest text-headline-1 max-md:text-display-1"> Login </h2>
-        <form class="w-full flex flex-col items-center justify-center">
+        <form id="login-form" class="w-full flex flex-col items-center justify-center">
             <input type="text" id="email" autocomplete="off" placeholder="E-mail" class="w-full h-16 rounded-lg py-2 px-4 mb-6 text-xl bg-gray-3 outline-brown-3 max-md:h-14 max-md:text-lg max-md:px-3">
             <div class="flex items-center justify-center w-full h-16 rounded-lg py-2 px-4 mb-6 text-xl bg-gray-3 outline-brown-3 outline-2 max-md:h-14 max-md:text-lg max-md:px-3">
                 <input type="password" id="password" autocomplete="off" placeholder="Senha" class="bg-transparent outline-none grow min-w-fit login">
