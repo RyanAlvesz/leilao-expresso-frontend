@@ -663,10 +663,6 @@ video {
   inset: 0px;
 }
 
-.-bottom-2 {
-  bottom: -0.5rem;
-}
-
 .bottom-0 {
   bottom: 0px;
 }
@@ -687,36 +683,12 @@ video {
   right: 0px;
 }
 
-.right-5 {
-  right: 1.25rem;
-}
-
 .top-0 {
   top: 0px;
 }
 
 .top-1\/2 {
   top: 50%;
-}
-
-.bottom-2 {
-  bottom: 0.5rem;
-}
-
-.bottom-full {
-  bottom: 100%;
-}
-
-.top-\[105\%\] {
-  top: 105%;
-}
-
-.top-\[calc\(100\%\+4vh\)\] {
-  top: calc(100% + 4vh);
-}
-
-.top-\[calc\(100\%\+2vh\)\] {
-  top: calc(100% + 2vh);
 }
 
 .top-\[calc\(100\%\+1rem\)\] {
@@ -745,6 +717,10 @@ video {
 
 .z-30 {
   z-index: 30;
+}
+
+.z-40 {
+  z-index: 40;
 }
 
 .order-none {
@@ -963,6 +939,14 @@ video {
   height: 20vh;
 }
 
+.h-\[5vh\] {
+  height: 5vh;
+}
+
+.h-\[65vh\] {
+  height: 65vh;
+}
+
 .h-\[75vh\] {
   height: 75vh;
 }
@@ -971,8 +955,8 @@ video {
   height: 8vh;
 }
 
-.h-\[calc\(\(\(\(100vw-16vw-4rem\)\/4-1\.5rem\)-0\.75rem\)\*3\/4\)\] {
-  height: calc((((100vw - 16vw - 4rem) / 4 - 1.5rem) - 0.75rem) * 3 / 4);
+.h-\[calc\(\(\(\(100vw-16vw-4rem\)\/4-1\.5rem\)-0\.75rem\)\)\] {
+  height: calc((((100vw - 16vw - 4rem) / 4 - 1.5rem) - 0.75rem));
 }
 
 .h-\[calc\(10vh-2rem\)\] {
@@ -988,40 +972,22 @@ video {
   height: 100%;
 }
 
-.h-\[50vh\] {
-  height: 50vh;
+.max-h-\[65vh\] {
+  max-height: 65vh;
 }
 
-.h-\[65vh\] {
-  height: 65vh;
-}
-
-.h-5 {
-  height: 1.25rem;
-}
-
-.h-\[calc\(\(\(\(100vw-16vw-4rem\)\/4-1\.5rem\)-0\.75rem\)\*\)\] {
-  height: calc((((100vw - 16vw - 4rem) / 4 - 1.5rem) - 0.75rem) * );
-}
-
-.h-\[calc\(\(\(\(100vw-16vw-4rem\)\/4-1\.5rem\)-0\.75rem\)\)\] {
-  height: calc((((100vw - 16vw - 4rem) / 4 - 1.5rem) - 0.75rem));
-}
-
-.h-\[calc\(\(\(100vw-16vw-4rem\)\/5-1\.5rem\)\)\] {
-  height: calc(((100vw - 16vw - 4rem) / 5 - 1.5rem));
-}
-
-.h-\[calc\(\(\(\(100vw-16vw-4rem\)\/5-1\.5rem\)-0\.75rem\)\)\] {
-  height: calc((((100vw - 16vw - 4rem) / 5 - 1.5rem) - 0.75rem));
-}
-
-.h-\[5vh\] {
-  height: 5vh;
+.max-h-fit {
+  max-height: -moz-fit-content;
+  max-height: fit-content;
 }
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-fit {
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 
 .w-0 {
@@ -1052,8 +1018,16 @@ video {
   width: 16vw;
 }
 
+.w-\[1vw\] {
+  width: 1vw;
+}
+
 .w-\[20vh\] {
   width: 20vh;
+}
+
+.w-\[calc\(\(\(100vw-16vw-4rem\)\/4-1\.5rem\)\)\] {
+  width: calc(((100vw - 16vw - 4rem) / 4 - 1.5rem));
 }
 
 .w-\[calc\(10vh-2rem\)\] {
@@ -1079,26 +1053,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[4vw\] {
-  width: 4vw;
-}
-
-.w-\[2vw\] {
-  width: 2vw;
-}
-
-.w-\[1vw\] {
-  width: 1vw;
-}
-
-.w-\[calc\(\(\(100vw-16vw-4rem\)\/5-1\.5rem\)\)\] {
-  width: calc(((100vw - 16vw - 4rem) / 5 - 1.5rem));
-}
-
-.w-\[calc\(\(\(100vw-16vw-4rem\)\/4-1\.5rem\)\)\] {
-  width: calc(((100vw - 16vw - 4rem) / 4 - 1.5rem));
 }
 
 .min-w-fit {
@@ -1152,26 +1106,6 @@ video {
 
 .-translate-y-1\/2 {
   --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-y-full {
-  --tw-translate-y: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-translate-y-6 {
-  --tw-translate-y: -1.5rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-translate-x-full {
-  --tw-translate-x: -100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-translate-y-full {
-  --tw-translate-y: -100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1478,10 +1412,6 @@ video {
   grid-auto-flow: column dense;
 }
 
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
 .grid-cols-\[10fr_2fr\] {
   grid-template-columns: 10fr 2fr;
 }
@@ -1708,10 +1638,6 @@ video {
 
 .gap-8 {
   gap: 2rem;
-}
-
-.gap-\[2\.5vh\] {
-  gap: 2.5vh;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2235,10 +2161,6 @@ video {
   background-color: rgb(97 103 122 / var(--tw-bg-opacity));
 }
 
-.bg-gray-2\/30 {
-  background-color: rgb(97 103 122 / 0.3);
-}
-
 .bg-gray-3 {
   --tw-bg-opacity: 1;
   background-color: rgb(216 217 218 / var(--tw-bg-opacity));
@@ -2396,22 +2318,6 @@ video {
   padding: 1rem;
 }
 
-.p-8 {
-  padding: 2rem;
-}
-
-.p-\[1vh\] {
-  padding: 1vh;
-}
-
-.p-\[4vh\] {
-  padding: 4vh;
-}
-
-.p-\[3vh\] {
-  padding: 3vh;
-}
-
 .p-\[3\.5vh\] {
   padding: 3.5vh;
 }
@@ -2471,34 +2377,9 @@ video {
   padding-bottom: 1rem;
 }
 
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.py-\[0\.5vh\] {
-  padding-top: 0.5vh;
-  padding-bottom: 0.5vh;
-}
-
-.py-\[1vh\] {
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-}
-
 .py-\[2vh\] {
   padding-top: 2vh;
   padding-bottom: 2vh;
-}
-
-.py-\[2\.5vh\] {
-  padding-top: 2.5vh;
-  padding-bottom: 2.5vh;
 }
 
 .py-\[calc\(2\.5vh\/2\)\] {
@@ -2510,32 +2391,12 @@ video {
   padding-left: 0.25rem;
 }
 
-.pl-5 {
-  padding-left: 1.25rem;
-}
-
 .pl-8 {
   padding-left: 2rem;
 }
 
-.pb-6 {
-  padding-bottom: 1.5rem;
-}
-
-.pt-2 {
-  padding-top: 0.5rem;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
-.pt-\[5vh\] {
-  padding-top: 5vh;
-}
-
-.pt-\[2\.5vh\] {
-  padding-top: 2.5vh;
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-left {
@@ -2648,14 +2509,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-display-1 {
-  font-size: calc(1.3rem + 6.7vw);
-}
-
-.text-title-1 {
-  font-size:  calc(1.6rem + 1.2vw);
 }
 
 .font-black {
@@ -3219,10 +3072,6 @@ video {
       max-width: 1536px;
     }
   }
-}
-
-.hover\:z-30:hover {
-  z-index: 30;
 }
 
 .hover\:scale-\[1\.02\]:hover {
