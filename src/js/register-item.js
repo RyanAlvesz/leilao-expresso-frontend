@@ -18,6 +18,7 @@ const itemReturnTerm = document.getElementById('item-return-term')
 
 // Declarando botão de ação do cadastro
 const buttonItem = document.getElementById('button-register-item') 
+
 // Funcao que armazena o Toast de sucesso
 const SuccessMessage = () => {
 
@@ -31,7 +32,7 @@ const SuccessMessage = () => {
 
 }
 
-// Funcao que 
+// Funcao que valida o cadastro do item
 const SuccessRegister = async() => {
 
     buttonItem.addEventListener('click', SuccessMessage())
@@ -40,6 +41,9 @@ const SuccessRegister = async() => {
 
 SuccessRegister()
 
+
+
+// Adiciona mascara no telefone
 const phoneMask = (value) => {
     if (!value) return ''
     value = value.replace(/\D/g,'')
@@ -47,6 +51,28 @@ const phoneMask = (value) => {
     value = value.replace(/(\d)(\d{4})$/,'$1-$2')
     return value
 }
+
+const userInfoValidation = () => {
+    let status = true
+    if (
+        nameInput.value == '' ||
+        phoneInput.value == '' ||
+        phoneInput.value.length != 15 ||
+        cpfInput.value == '' ||
+        cpfInput.value.length != 14 ||
+        emailInput.value == '' ||
+        !emailInput.value.includes('@') ||
+        !emailInput.value.includes('.com') ||
+        passwordInput.value == '' 
+    ) {
+        inputValidationErrorMessage()
+        status = false
+    }
+    return status
+}
+
+
+
 
 itemSellerTel.addEventListener('keyup', () => {
     itemSellerTel.value = phoneMask(itemSellerTel.value)
