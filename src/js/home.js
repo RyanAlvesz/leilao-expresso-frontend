@@ -3,15 +3,20 @@
 import { getBatchs } from "./functions.js"
 
 const selectContainer = document.getElementById('select-container')
-const selectInput = document.getElementById('filter-order-by')
+const selectedOption = document.getElementById('selected-item')
 const selectInputButton = document.getElementById('select-icon')
-
-let itemsARRAY = {}
+const selectOptions = document.getElementById('select-options')
+const searchBar = document.getElementById('search-bar')
 
 const setSelect = () => {
 
-    const selectedItem = document.createElement('div')
-    selectedItem.classList.add('')
+    for (let options of selectOptions.children){
+        options.addEventListener('click', (e) => {
+            selectedOption.textContent = e.target.innerText
+            localStorage.setItem('selectedOption', e.target.id)
+            setItems(e.target.id)
+        })
+    } 
 
 }
 
@@ -19,13 +24,24 @@ const changeSelectArrowDirection = () => {
     selectInputButton.classList.contains('rotate-[60deg]') ? selectInputButton.classList.remove('rotate-[60deg]') : selectInputButton.classList.add('rotate-[60deg]')
 }
 
+const toggleSelectOptions = () => {
+    selectOptions.classList.contains('hidden') ? selectOptions.classList.remove('hidden') : selectOptions.classList.add('hidden')
+}
+
+selectContainer.addEventListener('click', () => {
+    changeSelectArrowDirection()
+    toggleSelectOptions()
+})
+
+let itemsARRAY = {}
+
 const createItem = (item) => {
 
     const card = document.createElement('div')
-    card.classList.add('h-fit', 'flex', 'flex-col', 'p-3', 'gap-5', 'border-2', 'border-gold-3', 'rounded-xl', 'hover:scale-[1.02]', 'duration-200', 'ease-linear')
+    card.classList.add('flex', 'flex-col', 'justify-between', 'w-[calc(((100vw-16vw-4rem)/4-1.5rem))]', 'p-3', 'gap-5', 'border-2', 'border-gold-3', 'rounded-xl', 'hover:scale-[1.02]', 'duration-200', 'ease-linear', 'relative', 'z-30')
 
     const img = document.createElement('img')
-    img.classList.add('w-full', 'h-[calc((((100vw-16vw-4rem)/4-1.5rem)-0.75rem)*3/4)]', 'object-cover', 'object-center', 'border-2', 'border-gold-3', 'rounded-xl')
+    img.classList.add('w-full', 'h-[calc((((100vw-16vw-4rem)/4-1.5rem)-0.75rem))]', 'object-cover', 'object-center', 'border-2', 'border-gold-3', 'rounded-xl')
     img.src = item.foto
     img.alt = item.produto
 
@@ -93,9 +109,9 @@ const createItem = (item) => {
         dateInfo.textContent = days
     }
 
-    card.replaceChildren(img, itemName, itemInfoContainer, button)
+    card.replaceChildren(img, name, itemInfoContainer, button)
     itemInfoContainer.replaceChildren(value, client, date)
-    itemName.appendChild(name)
+    // itemName.appendChild(name)
     value.appendChild(valueInfo)
     client.appendChild(clientName)
     date.appendChild(dateInfo)
@@ -104,23 +120,88 @@ const createItem = (item) => {
 
 }
 
-const setItems = () => {
+const setItems = (sort) => {
 
     const batchContainer = document.getElementById('batch-container')
     batchContainer.replaceChildren('')
 
-    itemsARRAY.forEach((batch) => {
-        const card = createItem(batch)
-        batchContainer.appendChild(card)
-    })
+    let sortARRAY = itemsARRAY
+
+    switch (sort) {
+        case 'order-lower':
+
+            sortARRAY.sort(function(a, b) {
+                if (a.valor === b.valor) {
+                  return a.produto.localeCompare(b.produto)
+                } else {
+                  return a.valor - b.valor
+                }
+            })
+            sortARRAY.forEach((batch) => {
+                const card = createItem(batch)
+                batchContainer.appendChild(card)
+            })
+            break
+    
+        case 'order-higher':
+
+            sortARRAY.sort(function(a, b) {
+                if (a.valor === b.valor) {
+                  return b.produto.localeCompare(a.produto)
+                } else {
+                  return b.valor - a.valor
+                }
+            })
+            sortARRAY.forEach((batch) => {
+                const card = createItem(batch)
+                batchContainer.appendChild(card)
+            })
+            break
+    
+        default:
+
+            sortARRAY.sort(function(a, b) {
+                return b.id - a.id        
+            })
+
+            sortARRAY.forEach((batch) => {
+                const card = createItem(batch)
+                batchContainer.appendChild(card)
+            })
+            sortARRAY.forEach((batch) => {
+                const card = createItem(batch)
+                batchContainer.appendChild(card)
+            })
+
+            break
+
+    }
 
 }
 
-selectContainer.addEventListener('click', changeSelectArrowDirection)
+searchBar.addEventListener('keyup', async(e) => {
 
+    const search = e.target.value.toLowerCase()
+    if(search != ''){
+        const filteredBatchs = itemsARRAY.filter((batch) => {
+            return (
+                batch.produto.toLowerCase().includes(search) ||
+                batch.cliente.toLowerCase().includes(search) 
+            )
+        })
+        itemsARRAY = filteredBatchs
+        setItems(localStorage.getItem('selectedOption'))
+    }else{
+        const batchs = await getBatchs()
+        itemsARRAY = batchs.lotes
+        setItems(localStorage.getItem('selectedOption'))
+    }
+
+})
 
 window.addEventListener('load', async() => {
     const batchs = await getBatchs()
     itemsARRAY = batchs.lotes
     setItems()
+    setSelect()
 })
