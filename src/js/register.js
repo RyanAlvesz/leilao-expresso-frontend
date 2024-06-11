@@ -22,6 +22,7 @@ const placeInput = document.getElementById('place')
 const houseNumberInput = document.getElementById('house-number')
 const neighborhoodInput = document.getElementById('neighborhood')
 const cityInput = document.getElementById('city')
+const complementInput = document.getElementById('complement')
 const addressButton = document.getElementById('address-button')
 const returnAddress = document.getElementById('return-address')
 
@@ -289,9 +290,6 @@ profilePicture.addEventListener('change', getProfilePictureImage)
 
 // POST USER
 
-// JSON com as informações do usuário que será preenchido
-let userInfo = {}
-
 const postAddressFun = async() => {
 
     const address = {
@@ -301,6 +299,11 @@ const postAddressFun = async() => {
         bairro: neighborhoodInput.value,
         cidade: cityInput.value
     }
+
+    if(complementInput.value = '')
+        address.complemento = null
+    else
+        address.complemento = complementInput.value
 
     const addressID = await postAddress(address) 
     return addressID.ederecos.id
@@ -321,10 +324,10 @@ const postUserFun = async(addressID) => {
     if (localStorage.getItem('profile-icon-url')) {
         user.foto_perfil = localStorage.getItem('profile-icon-url')
     } else {
-        user.foto_perfil = 'https://firebasestorage.googleapis.com/v0/b/leilao-expresso.appspot.com/o/profile-icon%2Ficon.png?alt=media&token=2fbadc66-0b13-4eed-8360-7f87ea1076b7'
+        user.foto_perfil = null
     }
 
-    await postAddress(user)
+    return await postUser(user)
 
 }
 
@@ -332,11 +335,17 @@ const postInfos = async() => {
 
     loadingMessage()    
     const addressID = await postAddressFun()
-    await postUserFun(addressID)
+    const postInfo = await postUserFun(addressID)
     localStorage.clear()
-    if(staySignedInput){
+
+    localStorage.setItem('userId', postInfo.usuario[0].id)
+    localStorage.setItem('userProfileIcon', postInfo.usuario[0].foto_perfil)
+    localStorage.setItem('userName', postInfo.usuario[0].nome)
+
+    if(staySignedInput.checked){
         localStorage.setItem('staySigned', 'true')
     }
+    
     window.location = './home.html'
 
 }
