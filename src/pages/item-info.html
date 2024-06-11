@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <script type="module" src="../js/header-user-info.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="../js/item-info.js" defer></script>
     <link rel="stylesheet" href="../css/output.css">
     <title>Brinco da Taylor Swift</title>
 </head>
@@ -19,7 +21,7 @@
       <h1 class="tracking-widest font-black text-blue-3 text-3xl leading-8">LEILÃO EXPRESSO</h1>
     </a>
     <div class="flex items-center gap-4">
-      <p id="user-name" class="text-blue-3 font-semibold text-2xl">Taylor Swift</p>
+      <p id="user-name" class="text-blue-3 font-semibold text-2xl"></p>
       <a href="./profile.html" class="h-[calc(10vh-2rem)] w-[calc(10vh-2rem)] rounded-full border-2 border-brown-3 overflow-hidden">
           <img id="user-icon" src="https://firebasestorage.googleapis.com/v0/b/leilao-expresso.appspot.com/o/profile-icon%2Ficon.png?alt=media&token=2fbadc66-0b13-4eed-8360-7f87ea1076b7" class="h-full w-full bg-gray-2 object-cover ">
       </a>
@@ -40,8 +42,8 @@
 
       <div class="w-1/2 h-full bg-blue-3 rounded-2xl py-10 px-16 text-white">
         
-        <div class="flex gap-3 w-full h-12 items-start">
-          <img src="./images/filtro 1.png" alt="">
+        <div class="flex gap-3 w-full h-12 items-center">
+          <img class="h-6" src="../images/svg/filter-blue.svg" alt="">
           <p class="text-xl opacity-75">Moda / Beleza</p>
         </div>
 
@@ -102,7 +104,7 @@
             </div>
   
             <section class="h-32 flex items-end px-16">
-                <button class="border-2 cursor-not-allowed border-gray-3 text-gray-3 w-full h-16" >Ver perfil do verdedor</button>
+                <button id="btn-seller-profile" class="border-2 hover:scale-95 transition delay-95 cursor-pointer border-gray-3 text-gray-3 w-full h-16" >Ver perfil do verdedor</button>
             </section>
 
           </div>
