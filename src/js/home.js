@@ -38,15 +38,12 @@ let itemsARRAY = {}
 const createItem = (item) => {
 
     const card = document.createElement('div')
-    card.classList.add('flex', 'flex-col', 'justify-between', 'w-[calc(((100vw-16vw-4rem)/4-1.5rem))]', 'p-3', 'gap-5', 'border-2', 'border-gold-3', 'rounded-xl', 'hover:scale-[1.02]', 'duration-200', 'ease-linear', 'relative', 'z-30')
+    card.classList.add('flex', 'flex-col', 'justify-between', 'min-h-auto', 'max-h-fit', 'w-[calc(((100vw-16vw-4rem)/4-1.5rem))]', 'p-3', 'gap-3', 'border-2', 'border-gold-3', 'rounded-xl', 'hover:scale-[1.02]', 'duration-200', 'ease-linear', 'relative')
 
     const img = document.createElement('img')
     img.classList.add('w-full', 'h-[calc((((100vw-16vw-4rem)/4-1.5rem)-0.75rem))]', 'object-cover', 'object-center', 'border-2', 'border-gold-3', 'rounded-xl')
     img.src = item.foto
     img.alt = item.produto
-
-    const itemName = document.createElement('div')
-    itemName.classList.add('h-[8vh]', 'flex', 'justify-center', 'items-center')
 
     const name = document.createElement('h2')
     name.classList.add('text-title-2', 'text-center', 'font-semibold', 'text-blue-2')
@@ -111,7 +108,6 @@ const createItem = (item) => {
 
     card.replaceChildren(img, name, itemInfoContainer, button)
     itemInfoContainer.replaceChildren(value, client, date)
-    // itemName.appendChild(name)
     value.appendChild(valueInfo)
     client.appendChild(clientName)
     date.appendChild(dateInfo)
@@ -128,6 +124,7 @@ const setItems = (sort) => {
     let sortARRAY = itemsARRAY
 
     switch (sort) {
+
         case 'order-lower':
 
             sortARRAY.sort(function(a, b) {
@@ -168,10 +165,6 @@ const setItems = (sort) => {
                 const card = createItem(batch)
                 batchContainer.appendChild(card)
             })
-            sortARRAY.forEach((batch) => {
-                const card = createItem(batch)
-                batchContainer.appendChild(card)
-            })
 
             break
 
@@ -205,3 +198,4 @@ window.addEventListener('load', async() => {
     setItems()
     setSelect()
 })
+
