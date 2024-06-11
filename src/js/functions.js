@@ -19,6 +19,19 @@ export const getBatchs = async() => {
 
 // #region USERS
 
+export const getUsers = async() => {
+
+    try {
+        const url = `${apiUrl}/usuarios`
+        const response = await fetch(url)
+        const data = await response.json()
+        return data
+    } catch (error) {
+        return false
+    }
+
+}
+
 export const postUser = async(user) => {
 
     try {
@@ -41,6 +54,30 @@ export const postUser = async(user) => {
         const response = await fetch(url, options)
         const data = await response.json()
         return data
+    } catch (error) {
+        return false
+    }
+
+}
+
+export const postValidationUser = async(user) => {
+
+    try {
+        const url = `${apiUrl}/validacao/usuario`
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: user.email,
+                senha: user.senha
+            })
+        }
+        const response = await fetch(url, options)
+        const data = await response.json()
+        return data
+        
     } catch (error) {
         return false
     }
