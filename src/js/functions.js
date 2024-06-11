@@ -1,6 +1,6 @@
 'use strict'
 
-const apiUrl = 'https://leilao-expresso-backend.onrender.com/v1/leilao_expresso'
+const apiUrl = 'http://localhost:8080/v1/leilao_expresso'
 
 // #region ADM
 
@@ -727,7 +727,7 @@ export const getAddressById = async(id) => {
 export const postAddress = async(address) => {
 
     try {
-        const url = `${apiUrl}/usuarios`
+        const url = `${apiUrl}/enderecos`
         const options = {
             method: 'POST',
             headers: {
