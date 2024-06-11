@@ -32,7 +32,6 @@ module.exports = {
         'brown-4': '#F5CCA0',
         'black': '#000000',
         'white': '#FFFFFF'
->>>>>>> main
       }
     }
   }
