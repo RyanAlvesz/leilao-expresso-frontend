@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -574,16 +574,16 @@ video {
   height: 5rem;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
 .h-28 {
   height: 7rem;
 }
 
 .h-32 {
   height: 8rem;
+}
+
+.h-4\/5 {
+  height: 80%;
 }
 
 .h-4\/6 {
@@ -594,40 +594,20 @@ video {
   height: 1.25rem;
 }
 
+.h-\[10vh\] {
+  height: 10vh;
+}
+
+.h-\[calc\(10vh-2rem\)\] {
+  height: calc(10vh - 2rem);
+}
+
 .h-full {
   height: 100%;
 }
 
 .h-screen {
   height: 100vh;
-}
-
-.h-2 {
-  height: 0.5rem;
-}
-
-.h-\[10vh\] {
-  height: 10vh;
-}
-
-.h-1\/2 {
-  height: 50%;
-}
-
-.h-2\/4 {
-  height: 50%;
-}
-
-.h-3\/5 {
-  height: 60%;
-}
-
-.h-4\/5 {
-  height: 80%;
-}
-
-.h-\[calc\(10vh-3rem\)\] {
-  height: calc(10vh - 3rem);
 }
 
 .min-h-screen {
@@ -646,20 +626,16 @@ video {
   width: 24rem;
 }
 
+.w-\[calc\(10vh-2rem\)\] {
+  width: calc(10vh - 2rem);
+}
+
 .w-full {
   width: 100%;
 }
 
 .w-screen {
   width: 100vw;
-}
-
-.w-4 {
-  width: 1rem;
-}
-
-.w-\[calc\(10vh-3rem\)\] {
-  width: calc(10vh - 3rem);
 }
 
 .rotate-180 {
@@ -740,11 +716,6 @@ video {
   border-bottom-width: 2px;
 }
 
-.border-blue-3 {
-  --tw-border-opacity: 1;
-  border-color: rgb(83 92 145 / var(--tw-border-opacity));
-}
-
 .border-brown-3 {
   --tw-border-opacity: 1;
   border-color: rgb(232 180 85 / var(--tw-border-opacity));
@@ -768,11 +739,6 @@ video {
   --tw-border-opacity: 0.6;
 }
 
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
 .bg-blue-3 {
   --tw-bg-opacity: 1;
   background-color: rgb(83 92 145 / var(--tw-bg-opacity));
@@ -783,14 +749,14 @@ video {
   background-color: rgb(232 180 85 / var(--tw-bg-opacity));
 }
 
-.bg-gray-3 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(216 217 218 / var(--tw-bg-opacity));
-}
-
 .bg-gray-2 {
   --tw-bg-opacity: 1;
   background-color: rgb(97 103 122 / var(--tw-bg-opacity));
+}
+
+.bg-gray-3 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 217 218 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-30 {
@@ -800,11 +766,6 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.px-11 {
-  padding-left: 2.75rem;
-  padding-right: 2.75rem;
 }
 
 .px-16 {
@@ -827,6 +788,11 @@ video {
   padding-right: 10rem;
 }
 
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -840,11 +806,6 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
 
 .pb-8 {
