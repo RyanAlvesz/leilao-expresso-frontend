@@ -1,6 +1,7 @@
 'use strict'
 
-// import { uploadImage } from "./firebase.js"
+
+const apiUrl = 'http://localhost:8080/v1/leilao_expresso'
 
 // Declarando infos do input
 const itemTitle = document.getElementById('item-title')
@@ -29,17 +30,45 @@ const SuccessMessage = () => {
         showConfirmButton: false,
         timer: 1500
     })
-
 }
 
-// Funcao que valida o cadastro do item
-const SuccessRegister = async() => {
+// Funcao que armazena o Toast de sucesso
+const ErrorMessage = () => {
 
-    buttonItem.addEventListener('click', SuccessMessage())
-
+    Swal.fire({
+        position: "center",
+        icon: "Error",
+        title: "Não foi possivel concluir o cadastro",
+        showConfirmButton: false,
+        timer: 1500
+    })
 }
 
-SuccessRegister()
+const itemInfoValidation = () => {
+    let status = true
+    if (itemTitle.value == '' ||
+        itemDesc.value == '' ||
+        itemSellerName.value == '' ||
+        itemSellerTel.value.length != 15 ||
+        itemSellerEmail.value == '' ||
+        !itemSellerEmail.value.includes('@') ||
+        !itemSellerEmail.value.includes('.com') ||
+        itemDoc.value == '' ||
+        itemImage.value == '' ||
+        itemInicialValue.value == '' ||
+        itemReserveValue.value == '' ||
+        itemHistoric.value == '' ||
+        itemPaymentTerm.value == '' ||
+        itemReturnTerm.value == ''  ){
+        ErrorMessage()
+        status = false
+    }else{
+        buttonItem.addEventListener('click', SuccessMessage)
+    }
+    return status
+}
+
+itemInfoValidation()
 
 
 
@@ -51,29 +80,34 @@ const phoneMask = (value) => {
     value = value.replace(/(\d)(\d{4})$/,'$1-$2')
     return value
 }
-
-const userInfoValidation = () => {
-    let status = true
-    if (
-        nameInput.value == '' ||
-        phoneInput.value == '' ||
-        phoneInput.value.length != 15 ||
-        cpfInput.value == '' ||
-        cpfInput.value.length != 14 ||
-        emailInput.value == '' ||
-        !emailInput.value.includes('@') ||
-        !emailInput.value.includes('.com') ||
-        passwordInput.value == '' 
-    ) {
-        inputValidationErrorMessage()
-        status = false
-    }
-    return status
-}
-
-
-
-
 itemSellerTel.addEventListener('keyup', () => {
     itemSellerTel.value = phoneMask(itemSellerTel.value)
 })
+
+
+// Registro do item
+
+export const postItem = async(category) => {
+
+    try {
+        const url = `${apiUrl}/produto`
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+                nome: adm.email,
+                d: adm.telefone,
+                senha: adm.senha,
+                cpf: adm.cpf
+            })
+        }
+        const response = await fetch(url, options)
+        const data = await response.json()
+        return data
+    } catch (error) {
+        return false
+    }
+
+}
