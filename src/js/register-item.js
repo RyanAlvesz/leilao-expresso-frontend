@@ -1,8 +1,5 @@
 'use strict'
 
-
-const apiUrl = 'http://localhost:8080/v1/leilao_expresso'
-
 // Declarando infos do input
 const itemTitle = document.getElementById('item-title')
 const itemDesc = document.getElementById('item-desc')
@@ -83,31 +80,3 @@ const phoneMask = (value) => {
 itemSellerTel.addEventListener('keyup', () => {
     itemSellerTel.value = phoneMask(itemSellerTel.value)
 })
-
-
-// Registro do item
-
-export const postItem = async(category) => {
-
-    try {
-        const url = `${apiUrl}/produto`
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 
-                nome: adm.email,
-                d: adm.telefone,
-                senha: adm.senha,
-                cpf: adm.cpf
-            })
-        }
-        const response = await fetch(url, options)
-        const data = await response.json()
-        return data
-    } catch (error) {
-        return false
-    }
-
-}
