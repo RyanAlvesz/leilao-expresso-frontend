@@ -397,10 +397,10 @@ export const getBatchs = async() => {
 
 }
 
-export const getBatchsByPrice = async(price) => {
+export const getBatchsByPrice = async(price1, price2) => {
 
     try {
-        const url = `${apiUrl}/lote/valor/filtro?valorFixo=${price}`
+        const url = `${apiUrl}/valor/lote?valorInicial=${price1}&valorFinal=${price2}`
         const response = await fetch(url)
         const data = await response.json()
         return data
@@ -576,6 +576,7 @@ export const postUser = async(user) => {
                 foto_perfil: user.foto_perfil
             })
         }
+        console.log(options);
         const response = await fetch(url, options)
         const data = await response.json()
         return data
