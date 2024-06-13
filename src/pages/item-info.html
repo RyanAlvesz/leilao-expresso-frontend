@@ -7,10 +7,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/output.css">
+    <link rel="stylesheet" href="../css/loading.css">
     <script type="module" src="../js/header-user-info.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-    <script src="../js/item-info.js" defer></script>
-    <link rel="stylesheet" href="../css/output.css">
+    <script type="module" src="../js/item-info.js" defer></script>
     <title>Brinco da Taylor Swift</title>
 </head>
 <body class="h-screen w-screen font-poppins overflow-hidden">
@@ -31,7 +32,7 @@
   <main class="w-full h-full px-40">
     <nav class="h-28 flex items-center">
       <a href="./home.html">
-        <div class="flex items-center py-2 px-3 rounded-lg bg-gray-3 bg-opacity-30">
+        <div class="hover:scale-95 transition delay-100 flex items-center py-2 px-3 rounded-lg bg-gray-3 bg-opacity-30">
           <img class="h-8" src="../images/svg/arrow-prev-black.svg">
           <p>Voltar para listagem</p>
         </div>
@@ -48,17 +49,11 @@
         </div>
 
         <div class="pb-8">
-          <p class="text-xl opacity-75">Relógio Cartier Tank Américaine Cronograph 2341 -Ouro 18k / Certificado De Garantia E Estojo Original</p>
+          <p id="item-info-title" class="text-xl opacity-75">Relógio Cartier Tank Américaine Cronograph 2341 -Ouro 18k / Certificado De Garantia E Estojo Original</p>
         </div>
 
-        <div class="flex w-full justify-center gap-5 ">
-          <nav class="flex items-center">
-            <img class="rotate-180" src="./images/arrow-next-small-svgrepo-com 1.png" alt="">
-          </nav>
-            <img class="w-96" src="./images/image 1.png" alt="">
-          <nav class="flex items-center">
-            <img src="./images/arrow-next-small-svgrepo-com 1.png" alt="">
-          </nav>
+        <div class="flex w-full h-96 justify-center gap-5 bg-white border-2 border-gold-2 rounded-2xl">
+          <img id="item-info-foto" src="../images/foto-perfil.png" alt="">
         </div>
 
       </div>
@@ -66,40 +61,23 @@
       <div class="w-1/2 h-full px-28">
         <div class="w-full h-full justify-between flex flex-col py-8 drop-shadow-3xl rounded-sm border-gray-3 border-2">
 
-          <section class="px-16">
+          <section class="px-16 py-12 items-center flex flex-col gap-4">
 
-            <div class="flex w-full h-14 items-center justify-start gap-4 border-gray-2 border-b-2 border-opacity-50">
-              <img src="./images/66163 1.png" alt="">
-              <p>Encerra em:</p>
-              <p>15 dias | 06 horas | 9 minutos</p>
+            <div class="flex gap-2 items-center">
+              <h1>Encerra em:</h1>
+              <p id="item-info-close"></p>
             </div>
-  
-            <div class="flex w-full gap-4 h-12 items-end">
-              <p class="text-gray-2 opacity-60">Lance atual:</p>
-              <p class="text-3xl">R$ 1.898,00</p>
-              <p class="text-gray-2 opacity-60">(BRL)</p>
-            </div>
-  
-            <div class="flex gap-3 h-12 items-end">
-              <img src="./images/63820 1.png" alt="">
-              <p class="text-gray-2 opacity-60">Localização São Paulo - SP • Lote 1</p>
+            <div class="flex gap-2 items-center">
+              <p class="text-3xl">Valor: </p>
+              <p class="text-3xl font-semibold" id="item-info-value"></p>
             </div>
 
           </section>
 
           <div>
 
-            <section class="px-16">
-
-              <div class="flex items-center justify-center gap-4 text-xl rounded-t-3xl h-20 border-2 border-brown-3">
-                <p>Próximo Lance:</p>
-                <p>R$ 1.898,01</p>
-                <button class="flex justify-center items-center rounded-full w-5 h-5 bg-gray-3 text-gray-2">+</button>
-              </div>
-  
-            </section>
-  
-            <div class="flex cursor-pointer text-white text-xl items-center justify-center w-full h-20 bg-brown-3 ">
+          
+            <div id="btn-participation" class="flex cursor-pointer text-white text-xl items-center justify-center w-full h-20 bg-brown-3 ">
               <p>CONFIRMAR PARTICIPAÇÃO</p>
             </div>
   
@@ -115,5 +93,10 @@
     </section>
 
   </main>
+  <div id="loader" class="absolute inset-0 flex flex-col gap-6 items-center justify-center bg-white z-50">
+    <h2 class="text-headline-2 text-brown-3 font-semibold italic">Expresso</h2>
+    <img src="https://i.pinimg.com/originals/12/0b/d8/120bd89955eeb353f6b66730363a64e7.gif" class="h-[25vh] rounded-full border-4 border-brown-3" alt="">
+    <div class="loader"></div>
+  </div>
 </body>
 </html>
