@@ -1,3 +1,5 @@
+'use strict'
+
 import { getAddressById, getUserById } from "./functions.js"
 
 const profileName = document.getElementById('profile-name')
