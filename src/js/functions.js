@@ -1,6 +1,6 @@
 'use strict'
 
-const apiUrl = 'http://localhost:8080/v1/leilao_expresso'
+const apiUrl = 'https://leilao-expresso-backend.onrender.com/v1/leilao_expresso'
 
 // #region ADM
 
