@@ -1,6 +1,6 @@
 'use strict'
 
-import { postValidationUser, getUsers } from "./functions.js"
+import { getUserById, postValidationUser } from "./functions.js"
 
 const staySigned = localStorage.getItem('staySigned')
 
@@ -72,39 +72,18 @@ const login = async() => {
         let userValidation = await postValidationUser(loginInfo)
 
         if(userValidation.status){
-            
-            localStorage.setItem('userId', userValidation.usuario[0].id)
-            localStorage.setItem('userId', userValidation.usuario[0].id)
-            localStorage.setItem('userProfileIcon', userValidation.usuario[0].foto_perfil)
-            localStorage.setItem('userName', userValidation.usuario[0].nome)
+
+            const user = await getUserById(userValidation.usuario[0].id)
+
+            localStorage.setItem('userId', user.usuario[0].id)
+            localStorage.setItem('userProfileIcon', user.usuario[0].foto_perfil)
+            localStorage.setItem('userName', user.usuario[0].nome)
 
             if(staySignedInput.checked){
                 localStorage.setItem('staySigned', 'true')
             }
 
             window.location.href = './src/pages/home.html'
-
-        } else {
-
-            const usersARRAY = await getUsers()
-
-            usersARRAY.usuarios.forEach((user) => {
-                
-                if(user.email == email && user.senha == password){
-
-                    localStorage.setItem('userId', user.id)
-                    localStorage.setItem('userProfileIcon', user.foto_perfil)
-                    localStorage.setItem('userName', user.nome)
-
-                    if(staySignedInput.checked){
-                        localStorage.setItem('staySigned', 'true')
-                    }
-        
-                    window.location.href = './src/pages/home.html'
-
-                }
-
-            })
 
         }
 
