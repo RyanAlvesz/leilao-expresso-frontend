@@ -11,9 +11,10 @@
     <script type="module" src="../js/header-user-info.js" defer></script>
     <script src="../js/register-item.js" defer></script>
     <link rel="stylesheet" href="../css/output.css">
+    <link rel="stylesheet" href="../css/hidden-scrollbar.css">
     <title>Cadastrar Produto</title>
 </head>
-<body class="h-screen w-screen font-poppins overflow-hidden">
+<body class="h-screen w-screen font-poppins flex flex-col">
 
     <header class="w-full px-6 h-[10vh] flex items-center justify-between border-gray-2 border-b-2 border-opacity-60 ">
         <a href="./home.html" class="flex items-center justify-center h-full gap-4">
@@ -28,55 +29,45 @@
         </div>
     </header>
 
-    <main class="w-full h-[90vh] px-40 pt-10">
-        <form class="flex gap-3 flex-col w-full h-full bg-blue-3 text-white rounded-t-3xl px-40 pt-20 text-white">
+    <main class="w-full flex items-end grow px-40 pt-20">
+
+        <form class="flex gap-3 flex-col w-full h-full bg-blue-3 text-white rounded-t-3xl px-24 py-20">
         
             <h1 class="tracking-widest text-5xl font-black">CADASTRO DE ITEM</h1>
             <div class="flex w-full h-full gap-7">
 
-                <section class="h-5/6 w-1/2 flex flex-col gap-7 pt-8">
+                <section class="grid grid-cols-2 gap-x-8 content-between w-full h-full py-8">
 
                     <fieldset class="flex flex-col gap-2">
                         <label>Titulo do item:</label>
-                        <input required id="item-title" class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Nome do produto" type="text">
+                        <input required id="item-title" class="h-[5vh] rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Nome do produto" type="text">
+                    </fieldset>
+
+                    <fieldset class="flex gap-2">
+                        <div class="flex flex-col w-full gap-2">
+                            <label>Valor inicial:</label>
+                            <input required id="item-initial-value" class="h-[5vh] rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="R$" type="text">
+                        </div>
                     </fieldset>
 
                     <fieldset class="flex flex-col gap-2">
                         <label>Descrição do item:</label>
-                        <textarea required id="item-desc" class="rounded-lg px-3 py-2 h-24 text-blue-3 border-b-blue-3" placeholder="Descrição detalhada do item que está sendo colocado em leilão, incluindo características importantes, condição, idade, marca, e qualquer outra informação relevante." style="resize: none" type="text"></textarea>
-                    </fieldset>
-
-                    <fieldset class="flex flex-col gap-2">
-                        <label>Informações do vendedor: </label>
-                        <input required id="item-seller-name" class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="text" placeholder="Nome/Empresa">
-                        <input required id="item-seller-tel" class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="tel" placeholder="Telefone">
-                        <input required id="item-seller-email" class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" type="email" placeholder="E-mail">
+                        <textarea required id="item-desc" class="rounded-lg px-3 py-2 h-[15vh] text-blue-3 border-b-blue-3" placeholder="Descrição detalhada do item que está sendo colocado em leilão, incluindo características importantes, condição, idade, marca, e qualquer outra informação relevante." style="resize: none" type="text"></textarea>
                     </fieldset>
 
                     <fieldset class="flex w-full gap-2">
 
                         <div class="flex flex-col w-1/2 gap-2 ">
-                            
-                            <p>Documentos:</p>
-                            <fieldset class="flex bg-white rounded-xl p-2 justify-between" id="form-profile-picture" class="">
-                                <label id="profile-picture-label" for="item-doc" class="w-full flex 
-                                items-center justify-between py-4 px-2 bg-center bg-cover h-5
-                                cursor-pointer">
-        
-                                    <div class="h-6 flex gap-2">
-                                        <img src="../images/svg/insert-arquivo.svg" alt="Pessoa">
-                                        <p class="text-gray-2 opacity-60 w-full">Anexar aquivo</p>
-                                    </div>
-        
-                                    <input id="item-doc" type="file" id="profile-picture" class="hidden" accept="image/*">
-                                </label>
-                            </fieldset>
+                            <p>Categoria:</p>
+                            <select name="" id="" class="flex bg-white text h-[5vh] rounded-xl p-2 justify-between text-blue-3">
+                                <option value="Selecionar categoria" class="text-blue-3"></option>
+                            </select>
                         </div>
 
                         <div class="flex flex-col w-1/2 gap-2">
                             
                             <p>Imagem:</p>
-                            <fieldset class="flex bg-white rounded-xl p-2 justify-between" id="form-profile-picture" class="">
+                            <fieldset class="flex bg-white h-[5vh] rounded-xl p-2 justify-between" id="form-profile-picture" class="">
                                 <label id="profile-picture-label" for="item-image" class="w-full flex 
                                 items-center justify-between py-4 px-2 bg-center bg-cover h-5
                                 cursor-pointer">
@@ -92,34 +83,11 @@
                             </fieldset>
                         </div>
                     </fieldset>
+
+                    <button class="col-span-2 p-4 border w-fit place-self-center ease-linear duration-150 rounded-xl font-semibold hover:bg-white hover:text-blue-3">
+                        Cadastrar item
+                    </button>
                 </section>
-
-                <section class="h-5/6 w-1/2 flex flex-col gap-7 pt-8">
-                    <fieldset class="flex gap-2">
-                        <div class="flex flex-col w-1/2 gap-2">
-                            <label>Valor inicial:</label>
-                            <input required id="item-initial-value" class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="R$" type="text">
-                        </div>
-
-                        <div class="flex flex-col w-1/2 gap-2">
-                            <label>Preço de reserva:</label>
-                            <input required id="item-reserve-value" class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="R$" type="text">
-                        </div>
-                    </fieldset>
-                    <fieldset class="flex flex-col gap-2">
-                        <label>Informações sobre o histórico do item:</label>
-                        <textarea id="item-historic" class="rounded-lg px-3 py-2 h-20 text-blue-3 border-b-blue-3" placeholder="O item tem alguma caracteristica pertinente, como ser uma peça de colecionador ou ter sido de propriedade de uma figura pública." style="resize: none" type="text"></textarea>
-                    </fieldset>
-                    <fieldset class="flex flex-col gap-2">
-                        <label>Condições de venda:</label>
-                        <input id="item-payment-term" required class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Prazo de pagamento" type="text">
-                        <input id="item-return-term" required class="rounded-lg px-3 py-2 text-blue-3 border-b-blue-3" placeholder="Termos de devolução" type="text">
-                    </fieldset>
-                    <fieldset class="h-52 flex justify-end items-end p-2">
-                        <button id="button-register-item" class="bg-brown-3 rounded-lg px-10 py-3 text-xl text-black font-bold">Cadastrar</button>
-                    </fieldset>
-                </section>
-
             </div>
         </form>
     </main>

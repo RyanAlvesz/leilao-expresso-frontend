@@ -34,11 +34,12 @@ const ErrorMessage = () => {
 
     Swal.fire({
         position: "center",
-        icon: "Error",
+        icon: "error",
         title: "Não foi possivel concluir o cadastro",
         showConfirmButton: false,
         timer: 1500
     })
+
 }
 
 const itemInfoValidation = () => {
@@ -65,9 +66,7 @@ const itemInfoValidation = () => {
     return status
 }
 
-itemInfoValidation()
-
-
+// itemInfoValidation()
 
 // Adiciona mascara no telefone
 const phoneMask = (value) => {
