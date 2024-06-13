@@ -293,7 +293,7 @@ profilePicture.addEventListener('change', getProfilePictureImage)
 const postAddressFun = async() => {
 
     const address = {
-        cep: cepInput.value,
+        cep: cepInput.value.replace('-', ''),
         logradouro: placeInput.value,
         numero_casa: houseNumberInput.value,
         bairro: neighborhoodInput.value,

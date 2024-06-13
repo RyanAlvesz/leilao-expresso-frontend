@@ -1,12 +1,15 @@
 'use strict'
 
-import { getBatchs } from "./functions.js"
+import { getBatchs, getBatchsByDate, getBatchsByPrice, getCategories } from "./functions.js"
 
 const selectContainer = document.getElementById('select-container')
 const selectedOption = document.getElementById('selected-item')
 const selectInputButton = document.getElementById('select-icon')
 const selectOptions = document.getElementById('select-options')
-const searchBar = document.getElementById('search-bar')
+const searchBar = document.getElementById('search-bar') 
+const categoriesFilterContainer = document.getElementById('categories-filter-container') 
+const priceFilterContainer = document.getElementById('price-filter-container') 
+const dateFilterContainer = document.getElementById('date-filter-container') 
 
 const setSelect = () => {
 
@@ -14,9 +17,23 @@ const setSelect = () => {
         options.addEventListener('click', (e) => {
             selectedOption.textContent = e.target.innerText
             localStorage.setItem('selectedOption', e.target.id)
-            setItems(e.target.id)
+            setItems(e.target.id, true)
         })
     } 
+
+}
+
+const getDateFilterEvent = () => {
+
+    for (let input of dateFilterContainer.children){
+        input.children[0].addEventListener('click', async(e) => {
+            if(e.target.checked){
+                console.log(e.target.id);
+                const filteredItems = await getBatchsByDate(e.target.id)
+                console.log(filteredItems);
+            }
+        })
+    }
 
 }
 
@@ -33,15 +50,48 @@ selectContainer.addEventListener('click', () => {
     toggleSelectOptions()
 })
 
-let itemsARRAY = {}
+const createCategoryCard = (category) => {
+
+    const card = document.createElement('li')
+    card.classList.add('w-fit', 'px-2', 'py-1', 'border-gray-3', 'border', 'rounded-xl', 'grid', 'grid-cols-[1fr_1rem]', 'gap-2', 'items-center', 'justify-center')
+    card.textContent = category.nome
+    card.id = category.nome
+
+    const img = document.createElement('img')
+    img.classList.add('w-full', 'h-full', 'cursor-pointer')
+    img.src = '../images/svg/add.svg'
+    img.alt = 'Adicionar'
+
+    img.addEventListener('click', (e) => {
+        img.alt == 'Adicionar' ? img.src = '../images/svg/correct.svg' : img.src = '../images/svg/add.svg'
+        img.alt == 'Adicionar' ? img.alt = 'Selecionado' : img.alt = 'Adicionar'
+    })
+
+    card.appendChild(img)
+
+    return card
+
+}
+
+const setCategories = async() => {
+
+    const categories = await getCategories()
+    categories.categorias.forEach((category) => {
+        const card = createCategoryCard(category)
+        categoriesFilterContainer.appendChild(card)
+    })
+
+}
+
+let allItemsARRAY = {}
 
 const createItem = (item) => {
 
     const card = document.createElement('div')
-    card.classList.add('flex', 'flex-col', 'justify-between', 'min-h-auto', 'max-h-fit', 'w-[calc(((100vw-16vw-4rem)/4-1.5rem))]', 'p-3', 'gap-3', 'border-2', 'border-gold-3', 'rounded-xl', 'hover:scale-[1.02]', 'duration-200', 'ease-linear', 'relative')
+    card.classList.add('flex', 'flex-col', 'justify-between', 'min-h-auto', 'max-h-fit', 'max-[1600px]:w-[calc(((100vw-16vw-4rem)/4-1.5rem))]', 'max-lg:w-[calc(((100vw-16vw-4rem)/3-1rem))]', 'w-[calc(((100vw-16vw-4rem)/5-2rem))]', 'p-3', 'gap-3', 'border-2', 'border-gold-3', 'rounded-xl', 'hover:scale-[1.02]', 'duration-200', 'ease-linear', 'relative')
 
     const img = document.createElement('img')
-    img.classList.add('w-full', 'h-[calc((((100vw-16vw-4rem)/4-1.5rem)-0.75rem))]', 'object-cover', 'object-center', 'border-2', 'border-gold-3', 'rounded-xl')
+    img.classList.add('w-full', 'max-[1600px]:h-[calc((((100vw-16vw-4rem)/4-1.5rem)-0.75rem))]', 'max-lg:h-[calc((((100vw-16vw-4rem)/3-1rem)-0.75rem))]', 'h-[calc((((100vw-16vw-4rem)/5-2rem)-0.75rem))]', 'object-cover', 'object-center', 'border-2', 'border-gold-3', 'rounded-xl')
     img.src = item.foto
     img.alt = item.produto
 
@@ -121,7 +171,7 @@ const setItems = (sort) => {
     const batchContainer = document.getElementById('batch-container')
     batchContainer.replaceChildren('')
 
-    let sortARRAY = itemsARRAY
+    let sortARRAY = allItemsARRAY
 
     switch (sort) {
 
@@ -185,17 +235,22 @@ searchBar.addEventListener('keyup', async(e) => {
         itemsARRAY = filteredBatchs
         setItems(localStorage.getItem('selectedOption'))
     }else{
-        const batchs = await getBatchs()
-        itemsARRAY = batchs.lotes
         setItems(localStorage.getItem('selectedOption'))
     }
 
 })
 
 window.addEventListener('load', async() => {
+    
     const batchs = await getBatchs()
-    itemsARRAY = batchs.lotes
+    allItemsARRAY = batchs.lotes
+    
     setItems()
     setSelect()
+    setCategories()
+    getDateFilterEvent()
+
+    document.getElementById('loader').classList.add('hidden')
+
 })
 
