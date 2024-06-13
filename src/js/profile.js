@@ -1,4 +1,4 @@
-import { getUserById } from "./functions.js"
+import { getAddressById, getUserById } from "./functions.js"
 
 const profileName = document.getElementById('profile-name')
 const profileCPF = document.getElementById('profile-cpf')
@@ -8,6 +8,12 @@ const userIcon = document.getElementById('user-icon')
 const userName = document.getElementById('user-name')
 const userEmail = document.getElementById('user-email')
 const profilePassword = document.getElementById('profile-password')
+const userCEP = document.getElementById('user-cep')
+const userLogradouro = document.getElementById('user-logradouro')
+const userCidade = document.getElementById('user-cidade')
+const userBairro = document.getElementById('user-bairro')
+const userComplemento = document.getElementById('user-complemento')
+const userNumero = document.getElementById('user-numero')
 
 
 
@@ -28,6 +34,16 @@ const setProfileInfo = async(usuario) => {
 
 }
 
+const setAddressInfo = (endereco) => {
+
+    userCEP.value = endereco.cep
+    userLogradouro.value = endereco.logradouro
+    userCidade.value = endereco.cidade
+    userBairro.value = endereco.bairro
+    userComplemento.value = endereco.complemento
+    userNumero.value = endereco.numero_casa
+
+}
 
 // Máscaras de INPUT
 const phoneMask = (value) => {
@@ -61,6 +77,8 @@ window.addEventListener('load', async() => {
 
     const usuarioJSON = await getUserById(localStorage.getItem('userId'))
     setProfileInfo(usuarioJSON.usuario[0])
+    const enderecoJSON = await getAddressById(usuarioJSON.usuario[0].endereco_id)
+    setAddressInfo(enderecoJSON.usuarios[0])
     document.getElementById('loader').classList.add('hidden')
 
 })

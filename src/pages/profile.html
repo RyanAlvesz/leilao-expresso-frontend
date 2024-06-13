@@ -35,112 +35,69 @@
          <section class="flex flex-col gap-8">
             <h1 class="text-blue-2 text-3xl font-semibold px-2">Dados pessoais</h1>
             <div class="h-fit border-2 border-blue-1 rounded-3xl py-8 px-12 grid grid-cols-2 gap-14">
-
-                    <div class="flex flex-col gap-3 col-span-2">
-                        <h1 class="text-blue-2 text-3xl font-semibold">Nome:</h1>
-                        <input id="profile-name" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" value="Taylor Swift">
+                <div class="flex flex-col gap-3 col-span-2">
+                    <h1 class="text-blue-2 text-3xl font-semibold">Nome:</h1>
+                    <input id="profile-name" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" >
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h1 class="text-blue-2 text-3xl font-semibold">CPF:</h1>
+                    <input id="profile-cpf" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/20 rounded-2xl py-3 px-4 w-full text-2xl">
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h1 class="text-blue-2 text-3xl font-semibold">Telefone:</h1>
+                    <input id="profile-tel" type="tel" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/20 rounded-2xl py-3 px-4 w-full text-2xl">
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h1 class="text-blue-2 text-3xl font-semibold">Email:</h1>
+                    <input id="profile-email" type="email" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/20 rounded-3xl py-3 px-4 w-full text-2xl">
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h1 class="text-blue-2 text-3xl font-semibold">Nova senha:</h1>
+                    <div class="flex items-center justify-center w-full h-14 rounded-2xl py-2 px-4 mb-4 text-xl border-gray-2/20 border-2 bg-gray-3/20 outline-brown-3 outline-2 max-md:h-14 max-md:text-lg max-md:px-3">
+                        <input type="password" id="password" autocomplete="off" required class="bg-transparent outline-none grow min-w-fit">
+                        <button type="button" id="show-password" class="h-4/5 outline-none flex-shrink-0">
+                            <img src="../images/svg/eye.svg" alt="Olho" class="w-full h-full cursor-pointer">
+                        </button>
                     </div>
-    
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-blue-2 text-3xl font-semibold">CPF:</h1>
-                        <input id="profile-cpf" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/20 rounded-2xl py-3 px-4 w-full text-2xl" value="(55) 1191322-1323">
-                    </div>
-
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-blue-2 text-3xl font-semibold">Telefone:</h1>
-                        <input id="profile-tel" type="tel" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/20 rounded-2xl py-3 px-4 w-full text-2xl" value="(55) 1191322-1323">
-                    </div>
-
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-blue-2 text-3xl font-semibold">Email:</h1>
-                        <input id="profile-email" type="email" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/20 rounded-3xl py-3 px-4 w-full text-2xl" value="taylorswift13@gmail.com">
-                    </div>
-
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-blue-2 text-3xl font-semibold">Nova senha:</h1>
-                        <div class="flex items-center justify-center w-full h-14 rounded-2xl py-2 px-4 mb-4 text-xl border-gray-2/20 border-2 bg-gray-3/20 outline-brown-3 outline-2 max-md:h-14 max-md:text-lg max-md:px-3">
-                            <input type="password" id="password" autocomplete="off" required class="bg-transparent outline-none grow min-w-fit">
-                            <button type="button" id="show-password" class="h-4/5 outline-none flex-shrink-0">
-                                <img src="../images/svg/eye.svg" alt="Olho" class="w-full h-full cursor-pointer">
-                            </button>
-                        </div>
-                    </div>
+                </div>
             </div>
         </section>
 
         <section class="flex flex-col gap-8">
             <h1 class="text-blue-2 text-3xl font-semibold px-2">Endereço</h1>
-            <div class="h-fit border-2 border-blue-1 rounded-3xl py-8 px-12 grid grid-cols-2 gap-14">
-
+            <div class="h-fit border-2 border-blue-1 rounded-3xl py-8 px-12 grid grid-cols-4 gap-14">
+                <div class="flex flex-col gap-3 col-span-4">
+                    <h1 class="text-blue-2 text-3xl font-semibold">CEP:</h1>
+                    <input id="user-cep" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" >
+                </div>  
+                <div class="flex flex-col gap-3 col-span-3">
+                    <h1 class="text-blue-2 text-3xl font-semibold">Logradouro:</h1>
+                    <input id="user-logradouro" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" >
+                </div>  
+                <div class="flex flex-col gap-3 col-span-1">
+                    <h1 class="text-blue-2 text-3xl font-semibold">Número:</h1>
+                    <input id="user-numero" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" >
+                </div>  
                 <div class="flex flex-col gap-3 col-span-2">
-                    <h1 class="text-blue-2 text-3xl font-semibold">Nome:</h1>
-                    <input id="user-cep" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" value="Taylor Swift">
-                </div>
-
-                <div class="flex flex-col gap-3">
-                    <h1 class="text-blue-2 text-3xl font-semibold">CPF:</h1>
-                    <input id="user-complemento" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/20 rounded-2xl py-3 px-4 w-full text-2xl" value="(55) 1191322-1323">
-                </div>
-
-                <div class="flex w-full justify-between col-span-2">
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-blue-2 text-3xl font-semibold">Endereço:</h1>
-                        <div class="flex gap-3">
-                            <input id="user-cidade " value="Rua Cornelia Street" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 w-96 text-2xl">
-                            <input id="user-bairro" value="22" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 w-20 text-2xl flex justify-center">
-                            <input id="user-numero_casa " value="Los Angeles" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 text-2xl">
-                        </div>
-                    </div>
-    
-
-                </div>
-
+                    <h1 class="text-blue-2 text-3xl font-semibold">Cidade:</h1>
+                    <input id="user-cidade" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" >
+                </div>  
+                <div class="flex flex-col gap-3 col-span-2">
+                    <h1 class="text-blue-2 text-3xl font-semibold">Bairro:</h1>
+                    <input id="user-bairro" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" >
+                </div>  
+                <div class="flex flex-col gap-3 col-span-4">
+                    <h1 class="text-blue-2 text-3xl font-semibold">Complemento:</h1>
+                    <input id="user-complemento" type="text" class="text-blue-2 border-gray-2/20 outline-none border-2 bg-gray-3/30 rounded-2xl py-3 px-4 w-full text-2xl" >
+                </div> 
             </div>
         </section>
 
-        
-        <!--<span class="h-14"></span>
-
-        <section class="flex flex-col gap-4">
-            <h1 class="text-blue-2 text-3xl font-semibold px-6">Endereço:</h1>
-            <div class="h-full border-2 border-blue-1 rounded-3xl py-12 px-16 flex flex-col gap-14">
-
-                <div class="flex w-full justify-between">
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-blue-2 text-3xl font-semibold">CEP:</h1>
-                        <input value="46283345875" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 w-96 text-2xl">
-                    </div>
-    
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-blue-2 text-3xl font-semibold">Complemento:                        </h1>
-                        <input value="Ao lado do posto" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 w-96 text-2xl">
-                    </div>
-                </div>
-
-                <div class="flex w-full justify-between">
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-blue-2 text-3xl font-semibold">Endereço:</h1>
-                        <div class="flex gap-3">
-                            <input value="Rua Cornelia Street" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 w-96 text-2xl">
-                            <input value="22" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 w-20 text-2xl flex justify-center">
-                            <input value="Los Angeles" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 text-2xl">
-                            <input value="United States" class="text-blue-2 border-gray-2/20 border-2 bg-gray-2/40 rounded-2xl py-3 px-4 w-96 text-2xl">
-                        </div>
-                    </div>
-    
-
-                </div>
-
-                <div>
-                    <button class="text-blue-2 border-blue-2/60 border-2 bg-blue-3/30 rounded-2xl py-3 px-4 w-52 text-2xl hover:scale-95">Salvar</button>
-                </div>
-
-            </div>
-        </section> -->
 
     </main>
-    <div id="loader" class=" fixed inset-0 flex flex-col gap-6 items-center justify-center bg-white z-50">
+    <div id="loader" class="fixed inset-0 flex flex-col gap-6 items-center justify-center bg-white z-50">
         <h2 class="text-headline-2 text-brown-3 font-semibold italic">Expresso</h2>
+        <img src="https://i.pinimg.com/originals/12/0b/d8/120bd89955eeb353f6b66730363a64e7.gif" class="h-[25vh] rounded-full border-4 border-brown-3" alt="">
         <div class="loader"></div>
     </div>
 </body>
