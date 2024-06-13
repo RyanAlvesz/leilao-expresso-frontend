@@ -235,7 +235,7 @@ const phoneMask = (value) => {
     return value
 }
 
-phoneInput.addEventListener('keypress', () => {
+phoneInput.addEventListener('keyup', () => {
     phoneInput.value = phoneMask(phoneInput.value)
 })
 
@@ -248,7 +248,7 @@ const cpfMask = (value) => {
     return value
 }
 
-cpfInput.addEventListener('keypress', () => {
+cpfInput.addEventListener('keyup', () => {
     cpfInput.value = cpfMask(cpfInput.value)
 })
 
@@ -259,7 +259,7 @@ const cepMask = (value) => {
     return value
 }
 
-cepInput.addEventListener('keypress', () => {
+cepInput.addEventListener('keyup', () => {
     cepInput.value = cepMask(cepInput.value)
 })
 
@@ -306,7 +306,7 @@ const postAddressFun = async() => {
         address.complemento = complementInput.value
 
     const addressID = await postAddress(address) 
-    return addressID.ederecos.id
+    return addressID.enderecos.id
 
 }
 
@@ -315,17 +315,19 @@ const postUserFun = async(addressID) => {
     let user = {
         nome: nameInput.value,
         email: emailInput.value,
-        telefone: phoneInput.value,
+        telefone: phoneInput.value.replace('-', '').replace('(', '').replace(')', '').replace(' ', ''),
         senha: passwordInput.value,
-        cpf: cpfInput.value,
-        endereco_id: addressID.value
+        cpf: cpfInput.value.replace('.', '').replace('.', '').replace('-', ''),
+        endereco_id: addressID
     }
 
     if (localStorage.getItem('profile-icon-url')) {
         user.foto_perfil = localStorage.getItem('profile-icon-url')
     } else {
-        user.foto_perfil = null
+        user.foto_perfil = 'null'
     }
+
+    console.log(user);
 
     return await postUser(user)
 
@@ -336,11 +338,12 @@ const postInfos = async() => {
     loadingMessage()    
     const addressID = await postAddressFun()
     const postInfo = await postUserFun(addressID)
+
     localStorage.clear()
 
-    localStorage.setItem('userId', postInfo.usuario[0].id)
-    localStorage.setItem('userProfileIcon', postInfo.usuario[0].foto_perfil)
-    localStorage.setItem('userName', postInfo.usuario[0].nome)
+    localStorage.setItem('userId', postInfo.usuario.id)
+    localStorage.setItem('userProfileIcon', postInfo.usuario.foto_perfil)
+    localStorage.setItem('userName', postInfo.usuario.nome)
 
     if(staySignedInput.checked){
         localStorage.setItem('staySigned', 'true')
